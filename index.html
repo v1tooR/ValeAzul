@@ -92,12 +92,13 @@ nav.scrolled{background:rgba(8,18,35,.96);backdrop-filter:blur(24px);-webkit-bac
 .hero-slide.active .hero-slide-inner > *:nth-child(3){animation-delay:.18s}
 .hero-slide.active .hero-slide-inner > *:nth-child(4){animation-delay:.26s}
 @keyframes slideUpIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-/* Navigation dots */
-.hero-dots{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;gap:.5rem;z-index:10}
+/* Navigation controls */
+.hero-controls{position:absolute;bottom:2.2rem;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:.8rem;z-index:10}
+.hero-dots{display:flex;align-items:center;gap:.5rem}
 .hero-dot{width:8px;height:8px;border-radius:4px;background:rgba(255,255,255,.28);border:none;cursor:pointer;padding:0;transition:background .3s,width .3s}
 .hero-dot.active{background:var(--blue-sky);width:26px}
 /* Prev / Next arrows */
-.hero-arrows{position:absolute;bottom:2.2rem;right:2.5rem;display:flex;gap:.45rem;z-index:10}
+.hero-arrows{display:flex;gap:.45rem}
 .hero-arrow-btn{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,border-color .2s}
 .hero-arrow-btn:hover{background:rgba(78,168,222,.25);border-color:rgba(78,168,222,.4)}
 /* Progress bar */
@@ -217,9 +218,6 @@ section{padding:6rem 2.5rem}
 .stain-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
 .stain-img-wrap{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(10,22,40,.15)}
 .stain-img-wrap video{width:100%;height:580px;object-fit:cover;display:block}
-.stain-video-indicator{position:absolute;top:1.2rem;right:1.2rem;background:rgba(10,22,40,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--white);padding:.38rem .85rem;border-radius:50px;font-size:.7rem;font-weight:700;letter-spacing:.09em;display:flex;align-items:center;gap:.45rem;border:1px solid rgba(255,255,255,.1)}
-.stain-video-indicator::before{content:'';width:7px;height:7px;border-radius:50%;background:#ff4545;animation:pulse-dot 1.6s ease-in-out infinite}
-@keyframes pulse-dot{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,69,69,.6)}50%{opacity:.85;box-shadow:0 0 0 5px rgba(255,69,69,0)}}
 .stain-badge{position:absolute;bottom:1.5rem;left:1.5rem;background:var(--navy);color:var(--white);padding:.7rem 1.2rem;border-radius:12px;font-size:.78rem;font-weight:700;display:flex;align-items:center;gap:.5rem;border-left:3px solid var(--gold)}
 .stain-content .section-tag{color:var(--blue-bright);background:rgba(30,111,217,.08);border-color:rgba(30,111,217,.2)}
 .stain-headline{font-size:clamp(1.4rem,2.2vw,1.9rem);font-weight:800;color:var(--navy);line-height:1.22;margin-bottom:1rem;letter-spacing:-.018em}
@@ -488,9 +486,10 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
   .mobile-menu{display:flex}
   /* Hero mobile */
   .hero-slide-content{padding:0 1.25rem;padding-top:82px}
-  .hero-arrows{display:none}
+  .hero-controls{bottom:1.35rem;gap:.5rem}
+  .hero-arrow-btn{width:36px;height:36px}
   .scroll-indicator{display:none}
-  .hero-dots{bottom:1.5rem;gap:.15rem}
+  .hero-dots{gap:.15rem}
   .hero-dot{padding:.7rem .35rem;width:auto;height:auto;border-radius:0;background:transparent;position:relative}
   .hero-dot::before{content:'';display:block;width:8px;height:8px;border-radius:4px;background:rgba(255,255,255,.28);transition:background .3s,width .3s}
   .hero-dot.active{background:transparent;width:auto}
@@ -583,7 +582,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
 
     <!-- SLIDE 1 — Apresentação da marca -->
     <div class="hero-slide active">
-      <div class="hero-slide-bg" style="background-image:url('img/img_3241_1_1x.webp')"></div>
+      <div class="hero-slide-bg" style="background-image:url('img/img5.webp')"></div>
       <div class="hero-slide-overlay"></div>
       <div class="hero-slide-content">
         <div class="hero-slide-inner">
@@ -638,7 +637,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
 
     <!-- SLIDE 4 — Serviço completo -->
     <div class="hero-slide">
-      <div class="hero-slide-bg" style="background-image:url('img/taking_pullover_from_dry_cleaning_1_1x.webp')"></div>
+      <div class="hero-slide-bg" style="background-image:url('img/img2.webp')"></div>
       <div class="hero-slide-overlay"></div>
       <div class="hero-slide-content">
         <div class="hero-slide-inner">
@@ -671,23 +670,26 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
 
   </div><!-- /hero-slider -->
 
-  <!-- Dots -->
-  <div class="hero-dots" id="heroDots">
-    <button class="hero-dot active" aria-label="Slide 1"></button>
-    <button class="hero-dot" aria-label="Slide 2"></button>
-    <button class="hero-dot" aria-label="Slide 3"></button>
-    <button class="hero-dot" aria-label="Slide 4"></button>
-    <button class="hero-dot" aria-label="Slide 5"></button>
-  </div>
+  <!-- Controls -->
+  <div class="hero-controls">
+    <div class="hero-arrows">
+      <button class="hero-arrow-btn" id="heroPrev" aria-label="Slide anterior">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+    </div>
+    <div class="hero-dots" id="heroDots">
+      <button class="hero-dot active" aria-label="Slide 1"></button>
+      <button class="hero-dot" aria-label="Slide 2"></button>
+      <button class="hero-dot" aria-label="Slide 3"></button>
+      <button class="hero-dot" aria-label="Slide 4"></button>
+      <button class="hero-dot" aria-label="Slide 5"></button>
+    </div>
 
-  <!-- Arrows -->
-  <div class="hero-arrows">
-    <button class="hero-arrow-btn" id="heroPrev" aria-label="Slide anterior">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-    <button class="hero-arrow-btn" id="heroNext" aria-label="Próximo slide">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
+    <div class="hero-arrows">
+      <button class="hero-arrow-btn" id="heroNext" aria-label="Próximo slide">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
   </div>
 
   <!-- Progress bar -->
@@ -763,7 +765,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
     <img src="img/close_up_arranging_clothes_1_1x.webp" alt="Arrumação de enxoval">
   </div>
   <div class="img-strip-item">
-    <img src="img/wardrobe_renovation_winter_1_1x.webp" alt="Enxoval organizado">
+    <img src="img/img4.webp" alt="Enxoval organizado">
   </div>
 </div>
 
@@ -897,7 +899,6 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
     <div class="stain-inner">
       <div class="stain-img-wrap reveal from-left">
         <video src="img/video.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Tratamento artesanal de manchas — Vale Azul"></video>
-        <div class="stain-video-indicator">AO VIVO</div>
         <div class="stain-badge">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           Já incluso no serviço
@@ -1156,7 +1157,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
     <div class="equip-grid">
       <div class="equip-card reveal from-up d1">
         <div class="equip-card-img">
-          <img src="img/img_3241_1_1x.webp" alt="Equipamentos da Vale Azul">
+          <img src="img/img1.webp" alt="Equipamentos da Vale Azul">
         </div>
         <div class="equip-card-body">
           <div class="equip-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
@@ -1166,7 +1167,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
       </div>
       <div class="equip-card reveal from-up d2">
         <div class="equip-card-img">
-          <img src="img/img_3248_1_1x.webp" alt="Máquinas extratoras — Vale Azul">
+          <img src="img/img3.webp" alt="Máquinas extratoras — Vale Azul">
         </div>
         <div class="equip-card-body">
           <div class="equip-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg></div>
@@ -1176,7 +1177,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
       </div>
       <div class="equip-card reveal from-up d3">
         <div class="equip-card-img">
-          <img src="img/img_3240_1_1x.webp" alt="Tratamento manual — Vale Azul">
+          <img src="img/img4.webp" alt="Tratamento manual — Vale Azul">
         </div>
         <div class="equip-card-body">
           <div class="equip-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
@@ -1285,7 +1286,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
 <section class="final-cta-section" id="contato">
   <div class="final-cta-inner">
     <div class="final-cta-image reveal from-left">
-      <img src="img/taking_pullover_from_dry_cleaning_1_1x.webp" alt="Equipe Vale Azul atendendo cliente">
+      <img src="img/img5.webp" alt="Equipe Vale Azul atendendo cliente">
     </div>
     <div class="final-cta-content reveal from-right">
       <div class="section-tag gold" style="margin-bottom:1.6rem;align-self:flex-start">A hora certa é agora</div>
