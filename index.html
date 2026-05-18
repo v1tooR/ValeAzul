@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
+<title>Lavanderia Vale Azul — Industrial para Grandes Operações</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:       #0f2550;
+  --navy-mid:   #163068;
+  --blue-rich:  #1A3A6B;
+  --blue-bright:#1E6FD9;
+  --blue-sky:   #4EA8DE;
+  --white:      #FFFFFF;
+  --off-white:  #EEF5FF;
+  --page-bg:    #F0F6FF;
+  --gold:       #D4A843;
+  --gold-light: #e8c06a;
+  --text-muted: rgba(255,255,255,0.6);
+  --text-dim:   rgba(255,255,255,0.35);
+  --glass:      rgba(255,255,255,0.05);
+  --glass-border:rgba(255,255,255,0.1);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:#EEF5FF;color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 2.5rem;height:104px;display:flex;align-items:center;justify-content:space-between;transition:background .45s cubic-bezier(.4,0,.2,1),box-shadow .45s,height .3s;background:linear-gradient(180deg,rgba(8,18,35,.75) 0%,rgba(8,18,35,0) 100%)}
+nav.scrolled{background:rgba(8,18,35,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 1px 0 rgba(78,168,222,.12),0 6px 28px rgba(0,0,0,.28);height:96px}
+.nav-logo{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.05rem;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:.25rem;letter-spacing:.02em;transition:opacity .2s}
+.nav-logo:hover{opacity:.85}
+.nav-logo span{color:var(--blue-sky)}
+.nav-logo img{height:78px;width:78px;object-fit:contain;filter:drop-shadow(0 2px 10px rgba(78,168,222,.4))}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.68);text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;transition:color .2s;position:relative;padding-bottom:3px}
+.nav-links a::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1.5px;background:var(--blue-sky);transform:scaleX(0);transform-origin:left center;transition:transform .3s cubic-bezier(.4,0,.2,1);border-radius:2px}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+.nav-links a.active{color:var(--white)}
+.btn-nav-cta{background:#25D366;color:#fff;border:none;padding:.58rem 1.25rem;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.78rem;cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:.5rem;transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap;letter-spacing:.02em;box-shadow:0 4px 16px rgba(37,211,102,.22)}
+.btn-nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,211,102,.48);background:#20c45e}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border-radius:8px;transition:background .2s}
+.hamburger:hover{background:rgba(255,255,255,.06)}
+.hamburger span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:all .38s cubic-bezier(.4,0,.2,1)}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:998;background:rgba(6,12,26,.97);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);padding:96px 2rem 3rem;flex-direction:column;gap:0;transform:translateX(100%);opacity:0;transition:transform .42s cubic-bezier(.4,0,.2,1),opacity .32s ease;pointer-events:none;overflow-y:auto}
+.mobile-menu.open{transform:translateX(0);opacity:1;pointer-events:all}
+.mobile-menu a{color:rgba(255,255,255,.68);text-decoration:none;font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.12rem;padding:1.1rem 0;border-bottom:1px solid rgba(255,255,255,.05);transition:color .2s,padding-left .22s;letter-spacing:.02em;display:flex;align-items:center;gap:.9rem}
+.mobile-menu a .mm-dot{display:block;width:5px;height:5px;border-radius:50%;background:var(--blue-sky);opacity:0;transition:opacity .2s;flex-shrink:0}
+.mobile-menu a:hover{color:var(--white);padding-left:.4rem}
+.mobile-menu a:hover .mm-dot{opacity:1}
+.mobile-menu .btn-mobile-wa{margin-top:2.5rem;background:linear-gradient(135deg,#25D366,#1ca851);color:#fff;text-align:center;padding:1.15rem;border-radius:14px;font-size:1rem;border-bottom:none;justify-content:center;box-shadow:0 8px 28px rgba(37,211,102,.28)}
+.mobile-menu .btn-mobile-wa .mm-dot{display:none}
+
+/* ── HERO SLIDER ── */
+.hero{position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden}
+.hero-slider{position:absolute;inset:0}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;pointer-events:none}
+.hero-slide.active{opacity:1;z-index:1;pointer-events:all}
+.hero-slide-bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.08);transition:transform 8s ease-out}
+.hero-slide.active .hero-slide-bg{transform:scale(1.02) translateX(-8px)}
+.hero-slide-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,22,40,.88) 0%,rgba(10,22,40,.72) 55%,rgba(26,58,107,.6) 100%)}
+.hero-slide-content{position:absolute;inset:0;display:flex;align-items:center;z-index:2;padding:0 2.5rem;padding-top:72px}
+.hero-slide-inner{max-width:760px;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(212,168,67,.12);border:1px solid rgba(212,168,67,.3);color:var(--gold);padding:.45rem 1rem;border-radius:50px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.4rem}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-slide-eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-sky);margin-bottom:1rem}
+.hero h1,.hero-slide-heading{font-size:clamp(1.7rem,3.2vw,2.8rem);font-weight:700;line-height:1.14;letter-spacing:-.02em;margin-bottom:1.2rem;color:var(--white)}
+.hero h1 em,.hero-slide-heading em{font-style:normal;color:var(--blue-sky)}
+.hero-stat-big{font-size:clamp(3rem,6vw,5rem);font-weight:700;color:var(--white);line-height:1;margin-bottom:.5rem}
+.hero-stat-big em{color:var(--gold);font-style:normal}
+.hero-stat-unit{font-size:1rem;color:rgba(255,255,255,.55);font-weight:500;margin-bottom:1rem;letter-spacing:.04em}
+.hero-sub,.hero-slide-desc{font-size:.95rem;line-height:1.75;color:rgba(255,255,255,.62);max-width:540px;margin-bottom:2rem;font-weight:400}
+.hero-ctas{display:flex;gap:.9rem;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;background:var(--blue-bright);color:#fff;padding:.9rem 1.8rem;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.86rem;text-decoration:none;transition:transform .25s,box-shadow .25s;border:none;cursor:pointer;letter-spacing:.02em}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(30,111,217,.5)}
+.btn-primary:active{transform:translateY(-1px)}
+.btn-outline{display:inline-flex;align-items:center;gap:.6rem;background:transparent;color:rgba(255,255,255,.82);padding:.9rem 1.8rem;border-radius:50px;border:1px solid rgba(255,255,255,.22);font-family:'Montserrat',sans-serif;font-weight:500;font-size:.86rem;text-decoration:none;transition:border-color .2s,color .2s,background .2s;cursor:pointer}
+.btn-outline:hover{border-color:var(--blue-sky);color:var(--blue-sky);background:rgba(78,168,222,.06)}
+/* Slide content entrance animation */
+.hero-slide.active .hero-slide-inner > *{animation:slideUpIn .75s both}
+.hero-slide.active .hero-slide-inner > *:nth-child(2){animation-delay:.1s}
+.hero-slide.active .hero-slide-inner > *:nth-child(3){animation-delay:.18s}
+.hero-slide.active .hero-slide-inner > *:nth-child(4){animation-delay:.26s}
+@keyframes slideUpIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+/* Navigation dots */
+.hero-dots{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;gap:.5rem;z-index:10}
+.hero-dot{width:8px;height:8px;border-radius:4px;background:rgba(255,255,255,.28);border:none;cursor:pointer;padding:0;transition:background .3s,width .3s}
+.hero-dot.active{background:var(--blue-sky);width:26px}
+/* Prev / Next arrows */
+.hero-arrows{position:absolute;bottom:2.2rem;right:2.5rem;display:flex;gap:.45rem;z-index:10}
+.hero-arrow-btn{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,border-color .2s}
+.hero-arrow-btn:hover{background:rgba(78,168,222,.25);border-color:rgba(78,168,222,.4)}
+/* Progress bar */
+.hero-progress{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,.08);z-index:10}
+.hero-progress-bar{height:100%;background:var(--blue-sky);width:0}
+/* Scroll cue */
+.scroll-indicator{position:absolute;bottom:4.5rem;left:2.5rem;display:flex;flex-direction:column;align-items:center;gap:.4rem;opacity:.38;animation:scrollBounce 2s ease-in-out infinite;z-index:10}
+@keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+.scroll-indicator span{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+
+/* ── AUTHORITY STRIP ── */
+.authority-strip{background:var(--blue-rich);padding:2.5rem 2rem;border-top:1px solid rgba(78,168,222,.18);border-bottom:1px solid rgba(78,168,222,.18)}
+.strip-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)}
+.strip-stat{text-align:center;padding:0 2rem;position:relative}
+.strip-stat+.strip-stat::before{content:'';position:absolute;left:0;top:10%;height:80%;width:1px;background:rgba(255,255,255,.15)}
+.strip-number{font-family:'Montserrat',sans-serif;font-size:2.6rem;font-weight:700;color:var(--white);line-height:1}
+.strip-number em{color:var(--gold);font-style:normal}
+.strip-label{font-size:.76rem;color:rgba(255,255,255,.6);margin-top:.4rem;letter-spacing:.05em;font-weight:500}
+
+/* ── IMAGE STRIP ── */
+.img-strip{display:grid;grid-template-columns:repeat(3,1fr);height:280px;overflow:hidden}
+.img-strip-item{overflow:hidden;position:relative}
+.img-strip-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.img-strip-item:hover img{transform:scale(1.05)}
+.img-strip-item::after{content:'';position:absolute;inset:0;background:rgba(10,22,40,.35)}
+
+/* ── COMMON SECTIONS ── */
+section{padding:6rem 2.5rem}
+.container{max-width:1160px;margin:0 auto}
+.section-tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-sky);margin-bottom:1rem;padding:.3rem .85rem;background:rgba(78,168,222,.1);border-radius:50px;border:1px solid rgba(78,168,222,.2)}
+.section-tag.gold{color:var(--gold);background:rgba(212,168,67,.1);border-color:rgba(212,168,67,.2)}
+.section-heading{font-family:'Montserrat',sans-serif;font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:700;line-height:1.18;letter-spacing:-.022em;margin-bottom:1rem}
+.section-heading.light{color:var(--navy)}
+.section-heading.on-dark{color:var(--white)}
+.section-sub{font-size:.98rem;line-height:1.75;font-weight:400}
+.section-sub.dark{color:#4a5568}
+.section-sub.muted{color:rgba(255,255,255,.6)}
+
+/* ── AUTHORITY SECTION ── */
+.authority-section{background:var(--white);color:var(--navy)}
+.authority-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.authority-headline{font-family:'Montserrat',sans-serif;font-size:clamp(1.4rem,2.3vw,1.9rem);font-weight:700;color:var(--navy);line-height:1.22;margin-bottom:1.5rem;letter-spacing:-.018em}
+.authority-headline em{font-style:normal;color:var(--blue-bright)}
+.authority-body{font-size:.95rem;color:#4a5568;line-height:1.75;margin-bottom:2rem;font-weight:400}
+.authority-statement{background:var(--navy);color:var(--white);padding:1.5rem 2rem;border-radius:16px;font-family:'Montserrat',sans-serif;font-size:.93rem;font-weight:600;line-height:1.55;border-left:4px solid var(--gold)}
+.checklist{list-style:none;display:flex;flex-direction:column;gap:1rem}
+.checklist li{display:flex;align-items:flex-start;gap:1rem;font-size:.93rem;color:#2d3748;font-weight:500}
+.check-icon{flex-shrink:0;width:28px;height:28px;background:rgba(30,111,217,.1);border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+/* ── IMAGE + TEXT SPLIT ── */
+.split-section{background:#EEF5FF;padding:0}
+.split-inner{display:grid;grid-template-columns:1fr 1fr;min-height:420px}
+.split-img{overflow:hidden;position:relative}
+.split-img img{width:100%;height:100%;object-fit:cover;display:block}
+.split-img::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,#EEF5FF 100%)}
+.split-content{padding:4rem 3.5rem;display:flex;flex-direction:column;justify-content:center}
+.split-content .section-tag{color:var(--blue-bright);background:rgba(30,111,217,.08);border-color:rgba(30,111,217,.2)}
+
+/* ── BENEFITS ── */
+.benefits-section{background:var(--navy);position:relative;overflow:hidden}
+.benefits-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(78,168,222,.07) 1px,transparent 1px);background-size:36px 36px;pointer-events:none;z-index:0}
+.benefits-header{text-align:center;margin-bottom:3.5rem;position:relative;z-index:1}
+.benefits-sub{font-size:.97rem;color:rgba(255,255,255,.52);max-width:560px;margin:.8rem auto 0;line-height:1.78}
+.benefits-bento{display:grid;grid-template-columns:1.35fr 1fr 1fr;grid-template-rows:auto auto;gap:1rem;position:relative;z-index:1;margin-bottom:3rem}
+.bento-card{background:rgba(255,255,255,.033);border:1px solid rgba(255,255,255,.07);border-radius:22px;padding:2rem 1.8rem;position:relative;overflow:hidden;transition:border-color .4s ease,background .4s ease,transform .35s ease,box-shadow .35s ease;cursor:default}
+.bento-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue-bright),var(--blue-sky));transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.bento-card:hover{border-color:rgba(78,168,222,.26);background:rgba(30,111,217,.07);transform:translateY(-5px);box-shadow:0 24px 56px rgba(10,22,40,.45)}
+.bento-card:hover::after{transform:scaleX(1)}
+.bento-card--tall{grid-row:span 2;display:flex;flex-direction:column;min-height:340px;background:linear-gradient(160deg,rgba(30,111,217,.1) 0%,rgba(10,22,40,.2) 65%)}
+.bento-card--tall::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(78,168,222,.14) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.bento-num{position:absolute;top:.4rem;right:1.1rem;font-size:6rem;font-weight:800;line-height:1;color:rgba(78,168,222,.06);letter-spacing:-.05em;pointer-events:none;user-select:none;font-family:'Montserrat',sans-serif}
+.bento-icon{width:44px;height:44px;background:rgba(30,111,217,.14);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--blue-sky);margin-bottom:1.3rem;flex-shrink:0;transition:background .3s,transform .3s}
+.bento-card:hover .bento-icon{background:rgba(30,111,217,.25);transform:scale(1.08)}
+.bento-card--tall .bento-icon{margin-bottom:0}
+.bento-card h3{font-size:.97rem;font-weight:700;color:var(--white);margin-bottom:.5rem;line-height:1.3;letter-spacing:-.01em}
+.bento-card--tall h3{font-size:1.22rem;margin-top:auto;padding-top:1.5rem}
+.bento-card p{font-size:.82rem;color:rgba(255,255,255,.48);line-height:1.65}
+.bento-card--tall p{font-size:.88rem;color:rgba(255,255,255,.54);margin-top:.5rem}
+.benefits-cta{text-align:center;position:relative;z-index:1}
+
+/* ── SOLUTION ── */
+.solution-section{background:#EEF5FF;color:var(--navy)}
+.solution-heading{color:var(--navy);margin-bottom:.8rem}
+.solution-sub{color:#4a5568;margin-bottom:0}
+.solution-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;position:relative;margin-bottom:3rem}
+.solution-flow::after{display:none}
+
+/* Flow card */
+.flow-card{background:var(--white);border:1.5px solid rgba(10,22,40,.07);border-radius:22px;padding:2rem 1.6rem 1.8rem;display:flex;flex-direction:column;gap:.85rem;position:relative;overflow:hidden;transition:transform .38s ease,border-color .38s ease,box-shadow .38s ease;cursor:default}
+.flow-card::before{content:'';position:absolute;inset:0;background:linear-gradient(140deg,rgba(30,111,217,.06) 0%,transparent 55%);opacity:0;transition:opacity .38s;pointer-events:none;border-radius:22px}
+.flow-card:hover{transform:translateY(-7px);border-color:rgba(30,111,217,.28);box-shadow:0 20px 52px rgba(30,111,217,.13)}
+.flow-card:hover::before{opacity:1}
+.flow-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,var(--blue-bright),var(--blue-sky));transform:scaleX(0);transform-origin:left;transition:transform .52s cubic-bezier(.4,0,.2,1)}
+.flow-card:hover::after{transform:scaleX(1)}
+.flow-card-num{font-size:.64rem;font-weight:700;letter-spacing:.14em;color:rgba(10,22,40,.22);text-transform:uppercase;transition:color .3s}
+.flow-card:hover .flow-card-num{color:var(--blue-bright)}
+.flow-icon{width:52px;height:52px;background:rgba(30,111,217,.08);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--blue-bright);transition:background .35s,transform .38s,color .35s;flex-shrink:0}
+.flow-card:hover .flow-icon{background:rgba(30,111,217,.15);transform:scale(1.1) rotate(-4deg)}
+.flow-card h4{font-size:.97rem;font-weight:700;color:var(--navy);line-height:1.28;letter-spacing:-.01em}
+.flow-card p{font-size:.8rem;color:#718096;line-height:1.62;margin:0}
+
+/* Flow arrow connector */
+.flow-arrow{display:flex;align-items:center;justify-content:center;color:rgba(30,111,217,.22);padding-top:1.6rem;flex-shrink:0}
+
+/* Notes */
+.solution-notes{background:var(--navy);color:var(--white);border-radius:20px;padding:2.2rem 2.5rem;margin-bottom:2.5rem;display:flex;gap:0;align-items:stretch;border:1px solid rgba(78,168,222,.07)}
+.solution-note{flex:1;font-size:.87rem;color:rgba(255,255,255,.6);line-height:1.72;padding:0 2.5rem}
+.solution-note:first-child{padding-left:0;border-right:1px solid rgba(255,255,255,.08)}
+.solution-note:last-child{padding-right:0}
+.solution-note strong{color:var(--white)}
+.solution-cta{text-align:center}
+.btn-primary-dark{display:inline-flex;align-items:center;gap:.6rem;background:var(--navy);color:var(--white);padding:1rem 2rem;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.88rem;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s;letter-spacing:.02em}
+.btn-primary-dark:hover{background:var(--blue-rich);transform:translateY(-3px);box-shadow:0 12px 30px rgba(10,22,40,.3)}
+
+/* ── STAIN SECTION ── */
+.stain-section{background:var(--white);color:var(--navy)}
+.stain-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.stain-img-wrap{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(10,22,40,.15)}
+.stain-img-wrap video{width:100%;height:580px;object-fit:cover;display:block}
+.stain-video-indicator{position:absolute;top:1.2rem;right:1.2rem;background:rgba(10,22,40,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--white);padding:.38rem .85rem;border-radius:50px;font-size:.7rem;font-weight:700;letter-spacing:.09em;display:flex;align-items:center;gap:.45rem;border:1px solid rgba(255,255,255,.1)}
+.stain-video-indicator::before{content:'';width:7px;height:7px;border-radius:50%;background:#ff4545;animation:pulse-dot 1.6s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,69,69,.6)}50%{opacity:.85;box-shadow:0 0 0 5px rgba(255,69,69,0)}}
+.stain-badge{position:absolute;bottom:1.5rem;left:1.5rem;background:var(--navy);color:var(--white);padding:.7rem 1.2rem;border-radius:12px;font-size:.78rem;font-weight:700;display:flex;align-items:center;gap:.5rem;border-left:3px solid var(--gold)}
+.stain-content .section-tag{color:var(--blue-bright);background:rgba(30,111,217,.08);border-color:rgba(30,111,217,.2)}
+.stain-headline{font-size:clamp(1.4rem,2.2vw,1.9rem);font-weight:800;color:var(--navy);line-height:1.22;margin-bottom:1rem;letter-spacing:-.018em}
+.stain-headline em{font-style:normal;color:var(--blue-bright)}
+.stain-body{font-size:.95rem;color:#4a5568;line-height:1.75;margin-bottom:1.5rem}
+.stain-types{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.8rem}
+.stain-tag{display:inline-flex;align-items:center;gap:.4rem;background:#EEF5FF;border:1px solid rgba(30,111,217,.15);color:#2d4a8a;padding:.4rem .9rem;border-radius:50px;font-size:.78rem;font-weight:600}
+.stain-included{background:var(--navy);color:var(--white);border-radius:16px;padding:1.4rem 1.8rem;display:flex;align-items:center;gap:1rem;margin-top:.5rem}
+.stain-included-icon{flex-shrink:0;width:44px;height:44px;background:rgba(78,168,222,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--blue-sky)}
+.stain-included-text{font-size:.88rem;color:rgba(255,255,255,.8);line-height:1.6}
+.stain-included-text strong{color:var(--white);display:block;margin-bottom:.25rem;font-size:.93rem}
+
+/* ── TESTIMONIALS ── */
+.testimonials-section{background:var(--white);color:var(--navy)}
+.testi-header{text-align:center;margin-bottom:3.5rem}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.testi-card{background:var(--off-white);border:1px solid rgba(10,22,40,.07);border-radius:20px;padding:2rem;position:relative;transition:transform .3s,box-shadow .3s}
+.testi-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(30,111,217,.1)}
+.testi-quote{position:absolute;top:1.5rem;right:1.8rem;font-size:3.5rem;line-height:1;color:rgba(30,111,217,.12);font-family:'Montserrat',sans-serif;font-weight:900}
+.testi-stars{display:flex;gap:.25rem;margin-bottom:1rem}
+.testi-stars span{color:var(--gold);font-size:.9rem}
+.testi-text{font-size:.88rem;color:#4a5568;line-height:1.7;margin-bottom:1.5rem;font-weight:400}
+.testi-author{display:flex;align-items:center;gap:.9rem}
+.testi-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-rich),var(--blue-sky));display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.95rem;color:var(--white);flex-shrink:0}
+.testi-name{font-size:.88rem;font-weight:700;color:var(--navy)}
+.testi-role{font-size:.76rem;color:#718096;margin-top:.1rem}
+
+/* ── DIFFERENTIALS ── */
+.diff-section{background:var(--white);color:var(--navy);position:relative;overflow:hidden}
+.diff-section::before{content:'';position:absolute;top:-180px;right:-180px;width:560px;height:560px;background:radial-gradient(circle,rgba(30,111,217,.035) 0%,transparent 70%);pointer-events:none}
+.diff-header{text-align:center;margin-bottom:4rem;position:relative;z-index:1}
+.diff-header .section-heading{color:var(--navy)}
+/* Bento grid: tall featured card on left, 2×2 on right */
+.diff-grid{display:grid;grid-template-columns:1.22fr 1fr 1fr;grid-template-rows:auto auto;gap:1.2rem;position:relative;z-index:1}
+/* Base card */
+.diff-card{background:var(--off-white);border:1.5px solid rgba(10,22,40,.06);border-radius:22px;padding:2rem 1.8rem;position:relative;overflow:hidden;transition:transform .38s ease,border-color .38s ease,box-shadow .38s ease;cursor:default}
+.diff-card::before{content:'';position:absolute;inset:0;background:linear-gradient(140deg,rgba(30,111,217,.06) 0%,transparent 55%);opacity:0;transition:opacity .38s;pointer-events:none;border-radius:22px}
+.diff-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,var(--blue-bright),var(--blue-sky));transform:scaleX(0);transform-origin:left;transition:transform .52s cubic-bezier(.4,0,.2,1)}
+.diff-card:hover{transform:translateY(-6px);border-color:rgba(30,111,217,.28);box-shadow:0 20px 52px rgba(30,111,217,.12)}
+.diff-card:hover::before{opacity:1}
+.diff-card:hover::after{transform:scaleX(1)}
+/* Icon */
+.diff-card-icon{width:50px;height:50px;background:rgba(30,111,217,.09);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--blue-bright);margin-bottom:1.2rem;transition:background .35s,transform .38s}
+.diff-card:hover .diff-card-icon{background:rgba(30,111,217,.16);transform:scale(1.1) rotate(-4deg)}
+.diff-card h3{font-size:.97rem;font-weight:700;color:var(--navy);margin-bottom:.55rem;line-height:1.3;letter-spacing:-.01em}
+.diff-card p{font-size:.82rem;color:#718096;line-height:1.65}
+/* Featured card — spans full left column */
+.diff-card.featured{grid-row:span 2;background:var(--navy);border-color:transparent;display:flex;flex-direction:column;min-height:320px}
+.diff-card.featured::before{content:'';position:absolute;top:-50px;right:-50px;width:220px;height:220px;background:radial-gradient(circle,rgba(78,168,222,.13) 0%,transparent 70%);border-radius:50%;pointer-events:none;opacity:1;transform:none;transition:none}
+.diff-card.featured::after{background:linear-gradient(90deg,var(--blue-sky),var(--gold-light))}
+.diff-card.featured:hover{transform:translateY(-6px);border-color:rgba(78,168,222,.25);box-shadow:0 24px 60px rgba(10,22,40,.3)}
+.diff-card.featured .diff-card-icon{background:rgba(78,168,222,.14);color:var(--blue-sky);margin-bottom:0}
+.diff-card.featured:hover .diff-card-icon{background:rgba(78,168,222,.24);transform:scale(1.1) rotate(-4deg)}
+.diff-card.featured h3{color:var(--white);font-size:1.18rem;margin-top:auto;padding-top:1.4rem;line-height:1.22}
+.diff-card.featured p{color:rgba(255,255,255,.55);font-size:.87rem;margin-top:.45rem}
+/* Decorative large number in featured */
+.diff-feat-num{position:absolute;top:.3rem;right:1rem;font-size:7rem;font-weight:800;line-height:1;color:rgba(78,168,222,.07);letter-spacing:-.04em;pointer-events:none;user-select:none;font-family:'Montserrat',sans-serif}
+/* Tag */
+.diff-tag{display:inline-flex;align-items:center;margin-top:1.6rem;background:rgba(212,168,67,.14);border:1px solid rgba(212,168,67,.32);color:var(--gold);font-size:.67rem;font-weight:700;padding:.3rem .85rem;border-radius:50px;letter-spacing:.1em;text-transform:uppercase;width:fit-content}
+
+/* ── CAPACITY ── */
+.capacity-section{background:var(--navy-mid);position:relative;overflow:hidden}
+.cap-grid-bg{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(78,168,222,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(78,168,222,.04) 1px,transparent 1px);background-size:60px 60px}
+.cap-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.cap-heading{color:var(--white);margin-bottom:2rem}
+.cap-stats{display:flex;gap:2.5rem;margin-bottom:2.5rem}
+.cap-stat-block{text-align:center}
+.cap-stat-num{font-family:'Montserrat',sans-serif;font-size:3.5rem;font-weight:900;color:var(--blue-sky);line-height:1}
+.cap-stat-unit{font-size:1.2rem;color:var(--gold);font-weight:700}
+.cap-stat-lbl{font-size:.74rem;color:rgba(255,255,255,.5);margin-top:.3rem;letter-spacing:.03em;font-weight:500}
+.cap-list{list-style:none;display:flex;flex-direction:column;gap:1rem}
+.cap-list li{display:flex;align-items:center;gap:.8rem;font-size:.9rem;color:rgba(255,255,255,.75);font-weight:400}
+.cap-list-dot{width:8px;height:8px;border-radius:50%;background:var(--blue-sky);flex-shrink:0}
+.cap-visual{display:flex;flex-direction:column;gap:1.5rem}
+.cap-bar-label{display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:.5rem;color:rgba(255,255,255,.65)}
+.cap-bar-label strong{color:var(--white);font-weight:700}
+.cap-bar-track{height:8px;background:rgba(255,255,255,.08);border-radius:50px;overflow:hidden}
+.cap-bar-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--blue-rich),var(--blue-sky));width:0;transition:width 1.6s cubic-bezier(.22,1,.36,1)}
+.cap-closer{margin-top:3rem;padding:1.5rem 2rem;background:rgba(30,111,217,.1);border-radius:14px;border:1px solid rgba(30,111,217,.2);font-size:.9rem;color:rgba(255,255,255,.75);line-height:1.65}
+
+/* ── EQUIPMENT ── */
+.equip-section{background:linear-gradient(135deg,var(--blue-rich) 0%,#0d2a55 100%);position:relative;overflow:hidden}
+.equip-top{text-align:center;margin-bottom:3.5rem}
+.equip-tag{display:inline-block;margin-bottom:1.5rem;background:rgba(212,168,67,.15);border:1px solid rgba(212,168,67,.3);color:var(--gold);font-size:.7rem;font-weight:700;padding:.3rem .9rem;border-radius:50px;letter-spacing:.12em;text-transform:uppercase}
+.equip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.equip-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:22px;overflow:hidden;transition:transform .35s,background .35s,border-color .35s}
+.equip-card:hover{transform:translateY(-5px);background:rgba(255,255,255,.08);border-color:rgba(78,168,222,.3)}
+.equip-card-img{height:190px;overflow:hidden}
+.equip-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.equip-card:hover .equip-card-img img{transform:scale(1.06)}
+.equip-card-body{padding:1.8rem 1.8rem 2rem}
+.equip-card-icon{width:52px;height:52px;background:rgba(78,168,222,.15);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--blue-sky);margin-bottom:1.2rem}
+.equip-card h3{font-size:1rem;font-weight:800;color:var(--white);margin-bottom:.6rem;letter-spacing:-.01em}
+.equip-card p{font-size:.84rem;color:rgba(255,255,255,.55);line-height:1.65}
+
+/* ── TARGET AUDIENCE ── */
+.target-section{background:var(--off-white);color:var(--navy);position:relative;overflow:hidden}
+.target-section::before{content:'';position:absolute;top:-140px;left:-100px;width:480px;height:480px;background:radial-gradient(circle,rgba(30,111,217,.055) 0%,transparent 65%);border-radius:50%;pointer-events:none}
+.target-header{text-align:center;margin-bottom:3rem}
+.target-header .section-heading{color:var(--navy)}
+.target-grid{display:grid;grid-template-columns:1.22fr 1fr 1fr;grid-template-rows:auto auto;gap:1.2rem;position:relative;z-index:1}
+.target-card{background:var(--white);border:1.5px solid rgba(10,22,40,.06);border-radius:22px;padding:2rem 1.8rem;position:relative;overflow:hidden;transition:transform .38s ease,border-color .38s ease,box-shadow .38s ease;cursor:default}
+.target-card::before{content:'';position:absolute;inset:0;background:linear-gradient(140deg,rgba(30,111,217,.06) 0%,transparent 55%);opacity:0;transition:opacity .38s;pointer-events:none;border-radius:22px}
+.target-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,var(--blue-bright),var(--blue-sky));transform:scaleX(0);transform-origin:left;transition:transform .52s cubic-bezier(.4,0,.2,1)}
+.target-card:hover{transform:translateY(-6px);border-color:rgba(30,111,217,.28);box-shadow:0 20px 52px rgba(30,111,217,.12)}
+.target-card:hover::before{opacity:1}
+.target-card:hover::after{transform:scaleX(1)}
+.target-card-icon{width:52px;height:52px;background:rgba(30,111,217,.08);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--blue-bright);margin-bottom:1.1rem;transition:background .35s,transform .38s}
+.target-card:hover .target-card-icon{background:rgba(30,111,217,.16);transform:scale(1.1) rotate(-4deg)}
+.target-card-name{font-size:1rem;font-weight:800;color:var(--navy);margin-bottom:.5rem;letter-spacing:-.01em}
+.target-card p{font-size:.82rem;color:#718096;line-height:1.65}
+.target-card.featured{grid-row:span 2;background:var(--navy);border-color:transparent;display:flex;flex-direction:column;justify-content:flex-end;min-height:100%;padding-top:12rem}
+.target-card.featured::before{content:'';position:absolute;top:-50px;right:-50px;width:220px;height:220px;background:radial-gradient(circle,rgba(78,168,222,.13) 0%,transparent 70%);border-radius:50%;pointer-events:none;opacity:1;transform:none;transition:none}
+.target-card.featured::after{background:linear-gradient(90deg,var(--blue-sky),var(--gold-light))}
+.target-card.featured > :not(.target-card-img){position:relative;z-index:1}
+.target-card.featured .target-card-icon{background:rgba(78,168,222,.14);color:var(--blue-sky);margin-top:auto}
+.target-card.featured:hover .target-card-icon{background:rgba(78,168,222,.25);transform:scale(1.1) rotate(-4deg)}
+.target-card.featured .target-card-name{color:var(--white);font-size:1.18rem;margin-top:.2rem}
+.target-card.featured p{color:rgba(255,255,255,.55);font-size:.87rem}
+.target-feat-num{position:absolute;top:.3rem;right:1rem;font-size:7rem;font-weight:800;line-height:1;color:rgba(78,168,222,.07);pointer-events:none;letter-spacing:-.04em;font-family:'Montserrat',sans-serif}
+.target-tag{display:inline-flex;align-items:center;gap:.4rem;margin-top:1.6rem;background:rgba(78,168,222,.12);border:1px solid rgba(78,168,222,.2);border-radius:50px;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:var(--blue-sky);letter-spacing:.06em;text-transform:uppercase;width:fit-content}
+.target-note{text-align:center;margin-top:2.5rem;font-size:.9rem;color:#4a5568;font-weight:400;position:relative;z-index:1}
+.target-card-img{position:relative;width:calc(100% + 3.6rem);margin:-2rem -1.8rem 1.4rem;height:160px;overflow:hidden;border-radius:20px 20px 0 0;flex-shrink:0}
+.target-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.target-card:hover .target-card-img img{transform:scale(1.06)}
+.target-card-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:72%;background:linear-gradient(to bottom,transparent,var(--white));pointer-events:none}
+.target-card.featured .target-card-img{position:absolute;inset:0;width:100%;height:100%;margin:0;border-radius:inherit;z-index:0}
+.target-card.featured .target-card-img img{object-position:center 32%}
+.target-card.featured .target-card-img::after{inset:0;height:auto;background:linear-gradient(to bottom,rgba(15,37,80,0) 0%,rgba(15,37,80,.45) 34%,rgba(15,37,80,.92) 68%,var(--navy) 100%)}
+
+/* ── FAQ ── */
+.faq-section{background:#EEF5FF;color:var(--navy)}
+.faq-header{text-align:center;margin-bottom:3rem}
+.faq-header .section-heading{color:var(--navy)}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:.75rem}
+.faq-item{background:var(--white);border:1px solid rgba(10,22,40,.08);border-radius:16px;overflow:hidden}
+.faq-question{width:100%;text-align:left;background:none;border:none;padding:1.4rem 1.8rem;font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:700;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:background .2s}
+.faq-question:hover{background:rgba(30,111,217,.04)}
+.faq-icon{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:rgba(30,111,217,.1);display:flex;align-items:center;justify-content:center;color:var(--blue-bright);transition:transform .3s,background .3s}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--blue-bright);color:var(--white)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.faq-answer p{padding:0 1.8rem 1.4rem;font-size:.88rem;color:#4a5568;line-height:1.75;font-weight:400}
+.faq-item.open .faq-answer{max-height:200px}
+
+/* ── PROCESS ── */
+.process-section{background:var(--white);color:var(--navy);position:relative;overflow:hidden}
+.process-section::before{content:'';position:absolute;top:-220px;right:-140px;width:540px;height:540px;background:radial-gradient(circle,rgba(30,111,217,.05) 0%,transparent 65%);border-radius:50%;pointer-events:none}
+.process-header{text-align:center;margin-bottom:4.5rem;position:relative;z-index:1}
+.process-header .section-heading{color:var(--navy)}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;z-index:1}
+.process-steps::before{content:'';position:absolute;top:27px;left:calc(12.5% + 1px);right:calc(12.5% + 1px);height:1px;background:rgba(10,22,40,.08);pointer-events:none}
+.process-progress{position:absolute;top:27px;left:calc(12.5% + 1px);height:1px;width:0;background:linear-gradient(90deg,var(--blue-bright),var(--blue-sky));transition:width 1s cubic-bezier(.4,0,.2,1);pointer-events:none}
+.process-step{padding:0 2rem;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative}
+.process-num{width:54px;height:54px;border-radius:50%;border:1.5px solid rgba(10,22,40,.12);background:var(--off-white);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:800;letter-spacing:.14em;color:rgba(10,22,40,.3);margin-bottom:2.2rem;position:relative;z-index:1;transition:background .5s,border-color .5s,color .5s,box-shadow .5s;flex-shrink:0}
+.timeline-step.active .process-num{background:var(--blue-bright);border-color:var(--blue-bright);color:var(--white);box-shadow:0 0 0 8px rgba(30,111,217,.12)}
+.process-step-icon{width:56px;height:56px;background:rgba(30,111,217,.07);border:1px solid rgba(30,111,217,.1);border-radius:18px;display:flex;align-items:center;justify-content:center;color:var(--blue-bright);margin-bottom:1.4rem;transition:background .4s,transform .4s,color .4s,border-color .4s}
+.timeline-step.active .process-step-icon{background:rgba(30,111,217,.14);border-color:rgba(30,111,217,.22);color:var(--blue-bright);transform:translateY(-4px)}
+.process-step h3{font-size:.95rem;font-weight:800;color:var(--navy);margin-bottom:.6rem;letter-spacing:-.015em;line-height:1.3}
+.process-step p{font-size:.81rem;color:#718096;line-height:1.75}
+
+/* ── URGENCY ── */
+.urgency-section{background:var(--navy);text-align:center}
+.urgency-heading{font-family:'Montserrat',sans-serif;font-size:clamp(1.6rem,3vw,2.5rem);font-weight:900;color:var(--white);max-width:640px;margin:0 auto 1.5rem;line-height:1.15;letter-spacing:-.025em}
+.urgency-heading em{font-style:normal;color:var(--blue-sky)}
+.urgency-body{max-width:580px;margin:0 auto 1.2rem;font-size:.95rem;color:rgba(255,255,255,.6);line-height:1.75}
+.urgency-cta{margin-top:2.5rem}
+
+/* ── FINAL CTA ── */
+.final-cta-section{background:var(--navy);padding:0;position:relative;overflow:hidden}
+.final-cta-inner{display:grid;grid-template-columns:1.15fr 1fr;min-height:580px}
+.final-cta-image{position:relative;overflow:hidden}
+.final-cta-image img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;filter:brightness(.82)}
+.final-cta-image::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,37,80,0) 25%,var(--navy) 92%);pointer-events:none}
+.final-cta-content{padding:5rem 4.5rem 5rem 2.5rem;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1}
+.final-cta-content::before{content:'';position:absolute;top:-100px;right:-80px;width:340px;height:340px;background:radial-gradient(circle,rgba(30,111,217,.2) 0%,transparent 65%);border-radius:50%;pointer-events:none}
+.final-cta-section h2{font-size:clamp(1.55rem,2.8vw,2.55rem);font-weight:900;color:var(--white);margin:0 0 1.2rem;line-height:1.13;letter-spacing:-.025em;text-align:left}
+.final-cta-section h2 em{font-style:normal;color:var(--blue-sky)}
+.final-cta-section>*>p,.final-cta-desc{font-size:.97rem;color:rgba(255,255,255,.58);margin:0 0 2.4rem;line-height:1.78;text-align:left}
+.btn-wa-large{display:inline-flex;align-items:center;gap:.8rem;background:#25D366;color:var(--white);padding:1.1rem 2.2rem;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.97rem;text-decoration:none;transition:transform .22s,box-shadow .22s;letter-spacing:.02em;align-self:flex-start}
+.btn-wa-large:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.35)}
+.final-cta-trust{margin-top:1.8rem;display:flex;flex-direction:column;gap:.55rem}
+.final-cta-trust-item{display:flex;align-items:center;gap:.6rem;font-size:.79rem;color:rgba(255,255,255,.4);font-weight:500;letter-spacing:.01em}
+.final-cta-trust-item svg{color:var(--blue-sky);flex-shrink:0;opacity:.8}
+
+/* ── FOOTER ── */
+footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)}
+.footer-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem}
+.footer-brand .nav-logo{font-size:1.35rem;margin-bottom:.9rem;display:inline-flex}
+.footer-brand p{font-size:.82rem;color:rgba(255,255,255,.38);line-height:1.65;max-width:280px;font-weight:400}
+.footer-col h4{font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:700;color:rgba(255,255,255,.35);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-col ul a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.84rem;transition:color .2s;font-weight:400}
+.footer-col ul a:hover{color:var(--blue-sky)}
+.footer-bottom{max-width:1160px;margin:2rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:.76rem;color:rgba(255,255,255,.22);font-weight:400}
+
+/* ── FLOATING WA ── */
+.wa-float{position:fixed;bottom:1.8rem;right:1.8rem;z-index:9000;text-decoration:none;display:flex;align-items:center;gap:.8rem;color:var(--white)}
+.wa-float-btn{width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(37,211,102,.44);transition:transform .2s ease,box-shadow .2s ease;flex-shrink:0;animation:waPulse 3s ease-in-out infinite}
+.wa-float:hover .wa-float-btn{transform:translateY(-2px) scale(1.06);box-shadow:0 12px 34px rgba(37,211,102,.52)}
+.wa-float-tooltip{position:relative;background:var(--navy);color:var(--white);padding:.55rem 1rem;border-radius:8px;font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.2);opacity:0;transform:translateX(8px);transition:opacity .2s ease,transform .2s ease;pointer-events:none}
+.wa-float-tooltip::after{content:'';position:absolute;right:-7px;top:50%;transform:translateY(-50%);border:4px solid transparent;border-left-color:var(--navy)}
+.wa-float:hover .wa-float-tooltip{opacity:1;transform:translateX(0)}
+@keyframes waPulse{0%,100%{box-shadow:0 8px 24px rgba(37,211,102,.44)}50%{box-shadow:0 8px 40px rgba(37,211,102,.72)}}
+
+/* ── ANIMATION SYSTEM ── */
+/* Base reveal */
+.reveal{opacity:0;transition:opacity .75s ease,transform .75s ease}
+.reveal.from-up{transform:translateY(40px)}
+.reveal.from-down{transform:translateY(-30px)}
+.reveal.from-left{transform:translateX(-50px)}
+.reveal.from-right{transform:translateX(50px)}
+.reveal.scale-in{transform:scale(.93)}
+.reveal.visible{opacity:1;transform:translate(0) scale(1)}
+/* Stagger delays */
+.reveal.d1{transition-delay:.1s}
+.reveal.d2{transition-delay:.2s}
+.reveal.d3{transition-delay:.3s}
+.reveal.d4{transition-delay:.4s}
+.reveal.d5{transition-delay:.5s}
+.reveal.d6{transition-delay:.6s}
+/* Faster variant */
+.reveal.fast{transition-duration:.5s}
+/* Hero entrance — always plays */
+.hero-badge{animation:slideUpIn .8s .2s both}
+.hero h1{animation:slideUpIn .9s .35s both}
+.hero-sub{animation:slideUpIn .8s .5s both}
+.hero-ctas{animation:slideUpIn .8s .65s both}
+.hero-card{animation:slideUpIn .9s .5s both}
+@keyframes slideUpIn{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .hero-content{grid-template-columns:1fr}
+  .hero-card{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .hero-card-stat{margin-bottom:0;padding-bottom:0;border-bottom:none;padding-right:2rem;border-right:1px solid rgba(255,255,255,.08)}
+  .hero-card-stat:last-child{padding-right:0;border-right:none}
+  .authority-grid{grid-template-columns:1fr;gap:3rem}
+  .split-inner{grid-template-columns:1fr}
+  .split-img{height:280px}
+  .split-img::after{background:linear-gradient(180deg,transparent 60%,#EEF5FF 100%)}
+  .benefits-bento{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .bento-card--tall{grid-row:span 1;min-height:auto}
+  .solution-flow{grid-template-columns:repeat(2,1fr)}
+  .solution-flow::after{display:none}
+  .testi-grid{grid-template-columns:1fr}
+  .diff-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .diff-card.featured{grid-row:span 1;min-height:auto}
+  .cap-inner{grid-template-columns:1fr;gap:3rem}
+  .equip-grid{grid-template-columns:repeat(2,1fr)}
+  .process-steps{grid-template-columns:repeat(2,1fr);gap:3rem 0}
+  .process-steps::before,.process-progress{display:none}
+  .final-cta-content{padding:4rem 3rem}
+  .target-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .target-card.featured{grid-row:span 1;min-height:auto}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .footer-brand{grid-column:span 2}
+  .img-strip{height:200px}
+  .strip-inner{grid-template-columns:1fr;gap:1.5rem}
+  .strip-stat+.strip-stat::before{display:none}
+}
+@media(max-width:768px){
+  section{padding:4rem 1.25rem}
+  .nav-links,.btn-nav-cta{display:none}
+  .hamburger{display:flex}
+  .mobile-menu{display:flex}
+  /* Hero mobile */
+  .hero-slide-content{padding:0 1.25rem;padding-top:82px}
+  .hero-arrows{display:none}
+  .scroll-indicator{display:none}
+  .hero-dots{bottom:1.5rem;gap:.15rem}
+  .hero-dot{padding:.7rem .35rem;width:auto;height:auto;border-radius:0;background:transparent;position:relative}
+  .hero-dot::before{content:'';display:block;width:8px;height:8px;border-radius:4px;background:rgba(255,255,255,.28);transition:background .3s,width .3s}
+  .hero-dot.active{background:transparent;width:auto}
+  .hero-dot.active::before{background:var(--blue-sky);width:26px}
+  .hero-stat-big{font-size:clamp(2.4rem,9vw,3.5rem)}
+  .hero-ctas{flex-direction:column;gap:.7rem}
+  .btn-primary,.btn-outline{width:100%;justify-content:center}
+  /* Other mobile */
+  .hero-card{grid-template-columns:1fr}
+  .hero-card-stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:1rem;margin-bottom:1rem}
+  .hero-card-stat:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+  .benefits-bento{grid-template-columns:1fr}
+  .bento-card--tall{grid-row:span 1;min-height:auto}
+  .solution-flow{grid-template-columns:1fr}
+  .solution-notes{flex-direction:column;gap:0}
+  .solution-note{padding:1.4rem 0 !important;border-right:none !important;border-top:1px solid rgba(255,255,255,.08)}
+  .solution-note:first-child{padding-top:0 !important;border-top:none}
+  .stain-inner{grid-template-columns:1fr;gap:2.5rem}
+  .stain-img-wrap video{height:280px}
+  .diff-grid{grid-template-columns:1fr}
+  .diff-card.featured{grid-row:span 1;min-height:auto}
+  .equip-grid{grid-template-columns:1fr}
+  .target-grid{grid-template-columns:1fr}
+  .target-card.featured{grid-row:span 1;min-height:auto}
+  .footer-inner{grid-template-columns:1fr;gap:2rem}
+  .footer-brand{grid-column:span 1}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .btn-primary-dark,.btn-wa-large{width:100%;justify-content:center}
+  .final-cta-inner{grid-template-columns:1fr}
+  .final-cta-image{height:260px}
+  .final-cta-image::after{background:linear-gradient(to bottom,rgba(15,37,80,0) 30%,var(--navy) 95%)}
+  .final-cta-content{padding:2.5rem 1.8rem 3.5rem}
+  .final-cta-section h2{font-size:clamp(1.5rem,6vw,2rem)}
+  .final-cta-content::before{display:none}
+  .solution-notes{flex-direction:column;gap:1rem}
+  .cap-stats{flex-direction:column;gap:1.5rem}
+  .wa-float{bottom:1.2rem;right:1.2rem}
+  .wa-float-btn{width:52px;height:52px}
+  .wa-float-tooltip{display:none}
+  .process-steps{grid-template-columns:1fr 1fr;gap:2.5rem 1rem}
+  .process-steps::before,.process-progress{display:none}
+  .process-step{padding:0 .8rem}
+  .img-strip{grid-template-columns:1fr;height:auto}
+  .img-strip-item{height:180px}
+  .split-content{padding:2.5rem 1.5rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <img src="logo.png" alt="Lavanderia Vale Azul">
+    Vale<span>Azul</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#solucoes">Soluções</a></li>
+    <li><a href="#diferenciais">Diferenciais</a></li>
+    <li><a href="#capacidade">Capacidade</a></li>
+    <li><a href="#processo">Processo</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a href="https://wa.me/5500000000000" class="btn-nav-cta" target="_blank">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar no WhatsApp
+  </a>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#solucoes" onclick="closeMenu()"><span class="mm-dot"></span>Soluções</a>
+  <a href="#diferenciais" onclick="closeMenu()"><span class="mm-dot"></span>Diferenciais</a>
+  <a href="#capacidade" onclick="closeMenu()"><span class="mm-dot"></span>Capacidade</a>
+  <a href="#processo" onclick="closeMenu()"><span class="mm-dot"></span>Processo</a>
+  <a href="#contato" onclick="closeMenu()"><span class="mm-dot"></span>Contato</a>
+  <a href="https://wa.me/5500000000000" class="btn-mobile-wa" target="_blank">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar no WhatsApp
+  </a>
+</div>
+
+<!-- HERO SLIDER -->
+<section class="hero" id="hero">
+  <div class="hero-slider">
+
+    <!-- SLIDE 1 — Apresentação da marca -->
+    <div class="hero-slide active">
+      <div class="hero-slide-bg" style="background-image:url('img/img_3241_1_1x.webp')"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <div class="hero-slide-inner">
+          <div class="hero-badge"><div class="hero-badge-dot"></div>Lavanderia Industrial · B2B</div>
+          <h1>Lavanderia industrial para empresas que <em>não podem falhar</em> na operação.</h1>
+          <p class="hero-sub">Quando o volume é alto, improviso custa caro. A Vale Azul entrega estrutura, padrão e agilidade para quem precisa de uma operação confiável de verdade.</p>
+          <div class="hero-ctas">
+            <a href="https://wa.me/5500000000000" class="btn-primary" target="_blank">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Solicitar atendimento
+            </a>
+            <a href="#solucoes" class="btn-outline">Entender a solução ↓</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 — Capacidade -->
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background-image:url('img/img_3248_1_1x.webp');background-position:center 40%"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <div class="hero-slide-inner">
+          <div class="hero-slide-eyebrow">Capacidade industrial</div>
+          <div class="hero-stat-big">10.000 <em>peças</em></div>
+          <div class="hero-stat-unit">processadas por dia · até 200t por mês</div>
+          <h2 class="hero-slide-heading">Estrutura para <em>grandes volumes</em>, sem gargalos.</h2>
+          <p class="hero-slide-desc">Da coleta à entrega, nossa capacidade acompanha a demanda do seu negócio — em qualquer período do ano, sem imprevistos.</p>
+          <div class="hero-ctas">
+            <a href="https://wa.me/5500000000000" class="btn-primary" target="_blank">Solicitar atendimento</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 — Qualidade do enxoval -->
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background-image:url('img/close_up_classify_clothes_1_1_1x.webp')"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <div class="hero-slide-inner">
+          <div class="hero-slide-eyebrow">Qualidade garantida</div>
+          <h2 class="hero-slide-heading">Cada peça entregue com o padrão que a <em>sua marca</em> merece.</h2>
+          <p class="hero-slide-desc">Toalhas, lençóis, uniformes e enxoval em geral — tratados com rigor técnico e cuidado artesanal em cada ciclo de higienização.</p>
+          <div class="hero-ctas">
+            <a href="https://wa.me/5500000000000" class="btn-primary" target="_blank">Falar com a equipe</a>
+            <a href="#diferenciais" class="btn-outline">Ver diferenciais ↓</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4 — Serviço completo -->
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background-image:url('img/taking_pullover_from_dry_cleaning_1_1x.webp')"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <div class="hero-slide-inner">
+          <div class="hero-slide-eyebrow">Serviço completo</div>
+          <h2 class="hero-slide-heading">Da <em>coleta</em> à entrega, sem etapas soltas na sua operação.</h2>
+          <p class="hero-slide-desc">Organizamos toda a rotina de enxoval para que a sua equipe foque no que realmente importa — o atendimento ao cliente final.</p>
+          <div class="hero-ctas">
+            <a href="https://wa.me/5500000000000" class="btn-primary" target="_blank">Solicitar atendimento</a>
+            <a href="#solucoes" class="btn-outline">Ver o processo ↓</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5 — Parceria -->
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background-image:url('img/img_3240_1_1x.webp')"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <div class="hero-slide-inner">
+          <div class="hero-slide-eyebrow">Parceria de longo prazo</div>
+          <h2 class="hero-slide-heading">Um parceiro que cresce <em>junto com o seu negócio</em>.</h2>
+          <p class="hero-slide-desc">Contratos recorrentes com atendimento prioritário, suporte real e a regularidade que você pode contar em qualquer demanda.</p>
+          <div class="hero-ctas">
+            <a href="https://wa.me/5500000000000" class="btn-primary" target="_blank">Iniciar parceria</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /hero-slider -->
+
+  <!-- Dots -->
+  <div class="hero-dots" id="heroDots">
+    <button class="hero-dot active" aria-label="Slide 1"></button>
+    <button class="hero-dot" aria-label="Slide 2"></button>
+    <button class="hero-dot" aria-label="Slide 3"></button>
+    <button class="hero-dot" aria-label="Slide 4"></button>
+    <button class="hero-dot" aria-label="Slide 5"></button>
+  </div>
+
+  <!-- Arrows -->
+  <div class="hero-arrows">
+    <button class="hero-arrow-btn" id="heroPrev" aria-label="Slide anterior">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="hero-arrow-btn" id="heroNext" aria-label="Próximo slide">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="hero-progress"><div class="hero-progress-bar" id="heroProgress"></div></div>
+
+  <!-- Scroll cue (apenas no slide 1) -->
+  <div class="scroll-indicator">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    <span>Rolar</span>
+  </div>
+</section>
+
+<!-- AUTHORITY STRIP -->
+<div class="authority-strip">
+  <div class="strip-inner">
+    <div class="strip-stat reveal from-up">
+      <div class="strip-number"><span class="count-num" data-target="10000">10.000</span></div>
+      <div class="strip-label">peças por dia</div>
+    </div>
+    <div class="strip-stat reveal from-up d2">
+      <div class="strip-number"><span class="count-num" data-target="200">200</span><em>t</em></div>
+      <div class="strip-label">por mês</div>
+    </div>
+    <div class="strip-stat reveal from-up d3">
+      <div class="strip-number"><span class="count-num" data-target="100">100</span><em>%</em></div>
+      <div class="strip-label">processo controlado</div>
+    </div>
+  </div>
+</div>
+
+<!-- AUTHORITY / POSITIONING -->
+<section class="authority-section">
+  <div class="container">
+    <div class="authority-grid">
+      <div class="reveal from-left">
+        <div class="section-tag">Por que isso importa</div>
+        <h2 class="authority-headline">Sua operação depende de enxoval <em>limpo, bem cuidado</em> e entregue no prazo. Simples assim.</h2>
+        <p class="authority-body">Hotéis, motéis, buffets e restaurantes têm uma demanda real e constante por enxoval de qualidade. Manter esse padrão com consistência, no volume certo e no prazo certo, é o que a Vale Azul se dedicou a entregar.</p>
+        <div class="authority-statement">
+          "Não somos uma lavanderia comum. Somos uma estrutura preparada para atender empresas com demanda real."
+        </div>
+      </div>
+      <div class="reveal from-right d2">
+        <ul class="checklist">
+          <li>
+            <div class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E6FD9" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Alta capacidade de atendimento para operações robustas
+          </li>
+          <li>
+            <div class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E6FD9" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Padrão de qualidade consistente em cada entrega
+          </li>
+          <li>
+            <div class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E6FD9" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Suporte operacional com acompanhamento real
+          </li>
+          <li>
+            <div class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E6FD9" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Parceiro confiável para contratos recorrentes de longo prazo
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE STRIP -->
+<div class="img-strip">
+  <div class="img-strip-item">
+    <img src="img/close_up_classify_clothes_1_1x.webp" alt="Organização de peças">
+  </div>
+  <div class="img-strip-item">
+    <img src="img/close_up_arranging_clothes_1_1x.webp" alt="Arrumação de enxoval">
+  </div>
+  <div class="img-strip-item">
+    <img src="img/wardrobe_renovation_winter_1_1x.webp" alt="Enxoval organizado">
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<section class="benefits-section" id="beneficios">
+  <div class="container">
+    <div class="benefits-header">
+      <div class="section-tag gold reveal from-up">O que sua operação conquista</div>
+      <h2 class="section-heading on-dark reveal from-up d1">O padrão que empresas sérias merecem ter<br>na sua cadeia de enxoval.</h2>
+      <p class="benefits-sub reveal from-up d2">Com a Vale Azul como parceira, sua equipe ganha previsibilidade, qualidade e tranquilidade para focar no que realmente importa.</p>
+    </div>
+
+    <div class="benefits-bento">
+
+      <!-- 01 — Card tall (span 2 rows) -->
+      <div class="bento-card bento-card--tall reveal from-left">
+        <div class="bento-num">01</div>
+        <div class="bento-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Enxoval sempre disponível</h3>
+        <p>Sua operação nunca para por falta de peças. Mantemos a regularidade para você trabalhar com tranquilidade em qualquer volume — incluindo períodos de alta demanda.</p>
+      </div>
+
+      <!-- 02 -->
+      <div class="bento-card reveal from-up d1">
+        <div class="bento-num">02</div>
+        <div class="bento-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Qualidade que se vê e se sente</h3>
+        <p>Cada peça entregue com o padrão que sua marca merece — limpa, tratada e apresentável.</p>
+      </div>
+
+      <!-- 03 -->
+      <div class="bento-card reveal from-up d2">
+        <div class="bento-num">03</div>
+        <div class="bento-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Processo ágil e sem retrabalho</h3>
+        <p>Fluxo rigoroso que garante resultado na primeira passagem. Mais eficiência, menos custo.</p>
+      </div>
+
+      <!-- 04 -->
+      <div class="bento-card reveal from-up d3">
+        <div class="bento-num">04</div>
+        <div class="bento-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Sua equipe focada no que importa</h3>
+        <p>Enquanto cuidamos de todo o enxoval, sua equipe dedica energia ao atendimento ao cliente.</p>
+      </div>
+
+      <!-- 05 -->
+      <div class="bento-card reveal from-up d4">
+        <div class="bento-num">05</div>
+        <div class="bento-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <h3>Experiência do cliente elevada</h3>
+        <p>Enxoval bem cuidado é parte da experiência do seu hóspede — cuidamos com o mesmo rigor que você.</p>
+      </div>
+
+    </div>
+
+    <div class="benefits-cta reveal from-up">
+      <a href="https://wa.me/5500000000000" class="btn-primary" target="_blank">Conhecer a solução completa →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution-section" id="solucoes">
+  <div class="container">
+    <div class="reveal from-up" style="text-align:center;margin-bottom:3rem">
+      <div class="section-tag">A solução completa</div>
+      <h2 class="section-heading solution-heading">A Vale Azul cuida de todo o processo para sua empresa operar com mais segurança e tranquilidade.</h2>
+      <p class="section-sub solution-sub dark" style="margin:.8rem auto 0;max-width:580px">Serviço completo de lavanderia industrial — sem etapas soltas, sem improviso.</p>
+    </div>
+    <div class="solution-flow">
+      <div class="flow-card reveal scale-in d1">
+        <div class="flow-card-num">Etapa 01</div>
+        <div class="flow-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h4>Coleta</h4>
+        <p>Buscamos o enxoval direto na sua operação, no horário e frequência definidos em contrato.</p>
+      </div>
+      <div class="flow-card reveal scale-in d2">
+        <div class="flow-card-num">Etapa 02</div>
+        <div class="flow-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+        </div>
+        <h4>Higienização</h4>
+        <p>Lavagem industrial com produtos profissionais e controle rigoroso de temperatura e processo.</p>
+      </div>
+      <div class="flow-card reveal scale-in d3">
+        <div class="flow-card-num">Etapa 03</div>
+        <div class="flow-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h4>Passadoria</h4>
+        <p>Acabamento com calandras industriais — cada peça dobrada, perfeita e pronta para uso.</p>
+      </div>
+      <div class="flow-card reveal scale-in d4">
+        <div class="flow-card-num">Etapa 04</div>
+        <div class="flow-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h4>Entrega</h4>
+        <p>Peças separadas e entregues no prazo acordado, sem atraso e sem surpresas na sua rotina.</p>
+      </div>
+    </div>
+    <div class="solution-notes reveal from-up">
+      <p class="solution-note">Atendemos empresas que precisam de <strong>rotina, volume e previsibilidade</strong>, com estrutura preparada para contratos e demandas recorrentes.</p>
+      <p class="solution-note">Também realizamos atendimentos esporádicos, sempre respeitando a capacidade operacional e o compromisso com os clientes parceiros.</p>
+    </div>
+    <div class="solution-cta reveal from-up">
+      <a href="https://wa.me/5500000000000" class="btn-primary-dark" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar com a equipe no WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STAIN REMOVAL SECTION -->
+<section class="stain-section">
+  <div class="container">
+    <div class="stain-inner">
+      <div class="stain-img-wrap reveal from-left">
+        <video src="img/video.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Tratamento artesanal de manchas — Vale Azul"></video>
+        <div class="stain-video-indicator">AO VIVO</div>
+        <div class="stain-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Já incluso no serviço
+        </div>
+      </div>
+      <div class="reveal from-right d1">
+        <div class="section-tag">Cuidado que vai além</div>
+        <h2 class="stain-headline">Remoção artesanal de manchas — <em>sem custo adicional</em>.</h2>
+        <p class="stain-body">Manchas difíceis fazem parte da rotina de qualquer operação. Após a lavagem industrial, cada peça é avaliada manualmente. O que ainda precisa de atenção vai direto para a bancada, onde nossa equipe trata à mão — sem cobrar nada a mais por isso.</p>
+        <div class="stain-types">
+          <span class="stain-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg>
+            Gordura
+          </span>
+          <span class="stain-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg>
+            Maquiagem
+          </span>
+          <span class="stain-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg>
+            Sangue
+          </span>
+          <span class="stain-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg>
+            Marcas de hóspedes
+          </span>
+        </div>
+        <div class="stain-included">
+          <div class="stain-included-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="stain-included-text">
+            <strong>Retrabalho de manchas incluso no serviço</strong>
+            Sem cobrança adicional. Sem surpresa na conta. Peças tratadas do jeito certo, da primeira à última.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="testi-header">
+      <div class="section-tag reveal from-up">Quem já é parceiro</div>
+      <h2 class="section-heading reveal from-up d1" style="color:var(--navy)">O que dizem os clientes da Vale Azul</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal from-up d1">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">Trabalhamos com alto volume de enxoval todos os dias. A Vale Azul entrega no prazo e com qualidade consistente — exatamente o que um hotel precisa para funcionar bem.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">CR</div>
+          <div>
+            <div class="testi-name">Carlos R.</div>
+            <div class="testi-role">Gerente Operacional · Hotel</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal from-up d2">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">Terceirizar a lavanderia com a Vale Azul foi uma das melhores decisões para o nosso motel. Ganhamos previsibilidade e minha equipe parou de se preocupar com enxoval.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">MF</div>
+          <div>
+            <div class="testi-name">Mariana F.</div>
+            <div class="testi-role">Proprietária · Motel</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal from-up d3">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">Em eventos grandes, precisamos de tudo funcionando. A Vale Azul nos dá a segurança de que o enxoval vai chegar limpo, no prazo e em quantidade suficiente.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">RP</div>
+          <div>
+            <div class="testi-name">Ricardo P.</div>
+            <div class="testi-role">Coordenador · Buffet</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIALS -->
+<section class="diff-section" id="diferenciais">
+  <div class="container">
+    <div class="diff-header">
+      <div class="section-tag reveal from-up">Nossos diferenciais</div>
+      <h2 class="section-heading reveal from-up d1">Por que empresas escolhem a Lavanderia Vale Azul</h2>
+    </div>
+    <div class="diff-grid">
+      <!-- Featured — spans 2 rows, left column -->
+      <div class="diff-card featured reveal from-left">
+        <div class="diff-feat-num">01</div>
+        <div class="diff-card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Estrutura para grandes volumes</h3>
+        <p>Processamento de até 10.000 peças por dia com equipamentos industriais preparados para alta demanda.</p>
+        <span class="diff-tag">10.000 peças/dia</span>
+      </div>
+      <!-- 4 regular cards in 2×2 right side -->
+      <div class="diff-card reveal from-up d1">
+        <div class="diff-card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12H3l9-9 9 9h-2"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>
+        </div>
+        <h3>Serviço completo, da coleta à entrega</h3>
+        <p>Sua empresa não lida com etapas soltas. Cuidamos de todo o fluxo com praticidade e organização.</p>
+      </div>
+      <div class="diff-card reveal from-up d2">
+        <div class="diff-card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Tratamento artesanal de manchas</h3>
+        <p>Gordura, maquiagem, sangue — remoção manual já inclusa no serviço, sem custo adicional. Um diferencial raro no mercado.</p>
+      </div>
+      <div class="diff-card reveal from-up d3">
+        <div class="diff-card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Atendimento a operações críticas</h3>
+        <p>Em períodos de alta demanda, atuamos com disponibilidade reforçada para atender necessidades urgentes.</p>
+      </div>
+      <div class="diff-card reveal from-up d4">
+        <div class="diff-card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg>
+        </div>
+        <h3>Foco em parceria de longo prazo</h3>
+        <p>Nosso objetivo é entregar qualidade, constância e confiança para operações que precisam de estrutura de verdade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPACITY -->
+<section class="capacity-section" id="capacidade">
+  <div class="cap-grid-bg"></div>
+  <div class="container">
+    <div class="cap-inner">
+      <div class="reveal from-left">
+        <div class="section-tag">Capacidade operacional</div>
+        <h2 class="section-heading cap-heading">Capacidade que acompanha a necessidade do seu negócio</h2>
+        <div class="cap-stats">
+          <div class="cap-stat-block">
+            <div class="cap-stat-num"><span class="count-num" data-target="10000">0</span></div>
+            <div class="cap-stat-unit">peças/dia</div>
+            <div class="cap-stat-lbl">capacidade máxima</div>
+          </div>
+          <div class="cap-stat-block">
+            <div class="cap-stat-num"><span class="count-num" data-target="200">0</span><span class="cap-stat-unit">t</span></div>
+            <div class="cap-stat-unit">/mês</div>
+            <div class="cap-stat-lbl">média estimada</div>
+          </div>
+        </div>
+        <ul class="cap-list">
+          <li><div class="cap-list-dot"></div>Equipamentos industriais de alta produção</li>
+          <li><div class="cap-list-dot"></div>Calandras e máquinas extratoras modernas</li>
+          <li><div class="cap-list-dot"></div>Operação preparada para demandas recorrentes</li>
+          <li><div class="cap-list-dot"></div>Estrutura para grandes volumes e contratos</li>
+          <li><div class="cap-list-dot"></div>Fluxo controlado com padrão e regularidade</li>
+        </ul>
+        <div class="cap-closer">Mais segurança para empresas que precisam de estrutura de verdade na sua cadeia de enxoval.</div>
+      </div>
+      <div class="cap-visual reveal from-right d2">
+        <div class="cap-bar-item">
+          <div class="cap-bar-label"><span>Volume diário</span><strong>10.000 peças</strong></div>
+          <div class="cap-bar-track"><div class="cap-bar-fill" data-width="95"></div></div>
+        </div>
+        <div class="cap-bar-item">
+          <div class="cap-bar-label"><span>Capacidade mensal</span><strong>200 toneladas</strong></div>
+          <div class="cap-bar-track"><div class="cap-bar-fill" data-width="90"></div></div>
+        </div>
+        <div class="cap-bar-item">
+          <div class="cap-bar-label"><span>Controle de qualidade</span><strong>100%</strong></div>
+          <div class="cap-bar-track"><div class="cap-bar-fill" data-width="100"></div></div>
+        </div>
+        <div class="cap-bar-item">
+          <div class="cap-bar-label"><span>Pontualidade nas entregas</span><strong>Alta</strong></div>
+          <div class="cap-bar-track"><div class="cap-bar-fill" data-width="88"></div></div>
+        </div>
+        <div style="margin-top:2rem;text-align:center">
+          <a href="https://wa.me/5500000000000" class="btn-primary" target="_blank">Solicitar orçamento →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- TARGET AUDIENCE -->
+<section class="target-section">
+  <div class="container">
+    <div class="target-header reveal from-up">
+      <div class="section-tag">Público-alvo</div>
+      <h2 class="section-heading">Para quem a Vale Azul é ideal</h2>
+      <p class="section-sub" style="color:#4a5568;margin:.8rem auto 0;max-width:520px">Atendemos empresas que trabalham com alto volume de peças e precisam de uma lavanderia parceira profissional.</p>
+    </div>
+    <div class="target-grid">
+      <!-- Featured — hotéis -->
+      <div class="target-card featured reveal from-left">
+        <div class="target-card-img"><img src="img/hotel.webp" alt="Hotéis"></div>
+        <div class="target-feat-num">01</div>
+        <div class="target-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="target-card-name">Hotéis</div>
+        <p>Enxovais de cama, banho e mesa em alta rotatividade, com rastreamento por lote e entrega pontual para cada setor.</p>
+        <span class="target-tag">Alta rotatividade</span>
+      </div>
+      <!-- Motéis -->
+      <div class="target-card reveal from-up d1">
+        <div class="target-card-img"><img src="img/motel.webp" alt="Motéis"></div>
+        <div class="target-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20M4 20V10l8-6 8 6v10"/><rect x="9" y="14" width="6" height="6"/></svg></div>
+        <div class="target-card-name">Motéis</div>
+        <p>Logística discreta e confiável com ciclos de coleta e entrega sob medida para sua operação.</p>
+      </div>
+      <!-- Buffets -->
+      <div class="target-card reveal from-up d2">
+        <div class="target-card-img"><img src="img/buffet.webp" alt="Buffets & Eventos"></div>
+        <div class="target-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+        <div class="target-card-name">Buffets & Eventos</div>
+        <p>Toalhas, guardanapos e uniformes impecáveis para cada evento, entregues sempre no prazo certo.</p>
+      </div>
+      <!-- Restaurantes -->
+      <div class="target-card reveal from-up d3">
+        <div class="target-card-img"><img src="img/restaurante.webp" alt="Restaurantes"></div>
+        <div class="target-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div>
+        <div class="target-card-name">Restaurantes</div>
+        <p>Higienização de uniformes e enxoval de mesa com regularidade semanal e padrão profissional.</p>
+      </div>
+      <!-- Grandes Operações -->
+      <div class="target-card reveal from-up d4">
+        <div class="target-card-img"><img src="img/empresas.webp" alt="Grandes Operações"></div>
+        <div class="target-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
+        <div class="target-card-name">Grandes Operações</div>
+        <p>Capacidade de absorver grandes volumes com controle de qualidade e relatórios de produção detalhados.</p>
+      </div>
+    </div>
+    <p class="target-note reveal from-up">Nosso foco está em negócios que precisam de uma lavanderia parceira, com estrutura para atender de forma <strong>recorrente, organizada e profissional</strong>.</p>
+  </div>
+</section>
+
+<!-- EQUIPMENT -->
+<section class="equip-section">
+  <div class="container">
+    <div class="equip-top reveal from-up">
+      <div class="equip-tag">Tecnologia industrial</div>
+      <h2 class="section-heading on-dark">Tecnologia e estrutura a favor da produtividade</h2>
+      <p class="section-sub muted" style="margin:.8rem auto 0;max-width:560px">Equipamentos industriais que garantem qualidade, velocidade e consistência em cada lote processado.</p>
+    </div>
+    <div class="equip-grid">
+      <div class="equip-card reveal from-up d1">
+        <div class="equip-card-img">
+          <img src="img/img_3241_1_1x.webp" alt="Equipamentos da Vale Azul">
+        </div>
+        <div class="equip-card-body">
+          <div class="equip-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <h3>Calandras de alta produção</h3>
+          <p>Passadoria industrial com alta capacidade para manter o fluxo constante e a qualidade das peças.</p>
+        </div>
+      </div>
+      <div class="equip-card reveal from-up d2">
+        <div class="equip-card-img">
+          <img src="img/img_3248_1_1x.webp" alt="Máquinas extratoras — Vale Azul">
+        </div>
+        <div class="equip-card-body">
+          <div class="equip-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg></div>
+          <h3>Máquinas extratoras</h3>
+          <p>Lavagem e centrifugação integrada com eficiência industrial, reduzindo tempo de ciclo e aumentando capacidade total.</p>
+        </div>
+      </div>
+      <div class="equip-card reveal from-up d3">
+        <div class="equip-card-img">
+          <img src="img/img_3240_1_1x.webp" alt="Tratamento manual — Vale Azul">
+        </div>
+        <div class="equip-card-body">
+          <div class="equip-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <h3>Equipamentos para rotinas intensas</h3>
+          <p>Estrutura completa para processar demandas recorrentes de alta frequência, mantendo padrão e agilidade.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="faq-header">
+      <div class="section-tag reveal from-up">Perguntas frequentes</div>
+      <h2 class="section-heading reveal from-up d1" style="color:var(--navy)">Tudo que você precisa saber antes de começar</h2>
+    </div>
+    <div class="faq-list reveal from-up d2">
+      <div class="faq-item">
+        <button class="faq-question">
+          Qual é o volume mínimo para contratar a Vale Azul?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><p>Trabalhamos com empresas que têm demanda regular e contínua. Entre em contato para conversarmos sobre o seu volume e estruturar o atendimento mais adequado para a sua operação.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Como funciona a coleta e entrega?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><p>Definimos junto com você uma rotina de coleta e entrega conforme a necessidade da sua operação — frequência, horários e volume. Tudo organizado para que seu negócio não pare.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Vocês atendem em quais regiões?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><p>Atendemos empresas na nossa área de operação. Entre em contato via WhatsApp e verificamos se sua localização está dentro da nossa cobertura.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          O que acontece se uma peça for danificada?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><p>Nosso processo é rigoroso justamente para evitar danos. Mas se ocorrer alguma situação, comunicamos imediatamente e tratamos o caso com transparência e responsabilidade.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Vocês atendem também eventos e demandas pontuais?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><p>Sim, dentro da nossa capacidade disponível. Priorizamos os clientes parceiros com contratos regulares, mas atendemos demandas pontuais quando possível. Consulte disponibilidade via WhatsApp.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section" id="processo">
+  <div class="container">
+    <div class="process-header reveal from-up">
+      <div class="section-tag">Como funciona</div>
+      <h2 class="section-heading">Como funciona o atendimento</h2>
+      <p class="section-sub" style="color:#718096;margin:.8rem auto 0;max-width:480px">Um processo simples e estruturado do início ao fim, para garantir previsibilidade e qualidade em cada ciclo.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-progress" id="processProgress"></div>
+      <div class="timeline-step process-step reveal from-up" data-step="1">
+        <div class="process-num">01</div>
+        <div class="process-step-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <h3>Entendemos a necessidade da sua operação</h3>
+        <p>Avaliamos demanda, volume e frequência ideal para estruturar o melhor formato de parceria.</p>
+      </div>
+      <div class="timeline-step process-step reveal from-up d1" data-step="2">
+        <div class="process-num">02</div>
+        <div class="process-step-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+        </div>
+        <h3>Estruturamos a rotina do serviço</h3>
+        <p>Definimos coleta, processamento e entrega — garantindo previsibilidade e eficiência operacional.</p>
+      </div>
+      <div class="timeline-step process-step reveal from-up d2" data-step="3">
+        <div class="process-num">03</div>
+        <div class="process-step-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <h3>Executamos com padrão e acompanhamento</h3>
+        <p>Qualidade e regularidade mantidas em todo ciclo, com controle rigoroso de cada lote processado.</p>
+      </div>
+      <div class="timeline-step process-step reveal from-up d3" data-step="4">
+        <div class="process-num">04</div>
+        <div class="process-step-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Mantemos parceria e suporte contínuo</h3>
+        <p>Relacionamento de longo prazo com foco em eficiência — sendo um parceiro real, não apenas um fornecedor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta-section" id="contato">
+  <div class="final-cta-inner">
+    <div class="final-cta-image reveal from-left">
+      <img src="img/taking_pullover_from_dry_cleaning_1_1x.webp" alt="Equipe Vale Azul atendendo cliente">
+    </div>
+    <div class="final-cta-content reveal from-right">
+      <div class="section-tag gold" style="margin-bottom:1.6rem;align-self:flex-start">A hora certa é agora</div>
+      <h2>Organize sua operação de enxoval<br>antes que a demanda <em>cresça.</em></h2>
+      <p class="final-cta-desc">Empresas que estruturam a parceria com antecedência ganham previsibilidade, atendimento prioritário e uma operação que acompanha qualquer volume.</p>
+      <a href="https://wa.me/5500000000000" class="btn-wa-large" target="_blank">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar com a equipe no WhatsApp
+      </a>
+      <div class="final-cta-trust">
+        <div class="final-cta-trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Atendimento rápido, sem compromisso
+        </div>
+        <div class="final-cta-trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Estrutura preparada para grandes volumes
+        </div>
+        <div class="final-cta-trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Coleta e entrega incluídas no serviço
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">
+        <img src="logo.png" alt="Lavanderia Vale Azul">
+        Vale<span>Azul</span>
+      </a>
+      <p>Lavanderia industrial para empresas que não podem falhar na operação. Estrutura, padrão e agilidade para grandes demandas.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="#solucoes">Soluções</a></li>
+        <li><a href="#diferenciais">Diferenciais</a></li>
+        <li><a href="#capacidade">Capacidade</a></li>
+        <li><a href="#processo">Processo</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="https://wa.me/5500000000000" target="_blank">WhatsApp</a></li>
+        <li><a href="#contato">Solicitar proposta</a></li>
+        <li><a href="#contato">Falar com a equipe</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Lavanderia Vale Azul. Todos os direitos reservados.</p>
+    <p>Lavanderia industrial para hotelaria, motéis, buffets e restaurantes.</p>
+  </div>
+</footer>
+
+<script>
+// NAV scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 30); }, {passive:true});
+
+// HAMBURGER
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  const isOpen = hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+function closeMenu() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// REVEAL — scroll animations
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.13, rootMargin: '0px 0px -50px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+
+// COUNT-UP
+const countEls = document.querySelectorAll('.count-num');
+const countObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const target = parseInt(el.dataset.target);
+    const dur = 1800;
+    const start = performance.now();
+    function tick(now) {
+      const t = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      const val = Math.round(eased * target);
+      el.textContent = val >= 1000 ? val.toLocaleString('pt-BR') : val;
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    countObs.unobserve(el);
+  });
+}, { threshold: 0.5 });
+countEls.forEach(el => countObs.observe(el));
+
+// CAPACITY BARS
+const bars = document.querySelectorAll('.cap-bar-fill');
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (!e.isIntersecting) return; e.target.style.width = e.target.dataset.width + '%'; barObs.unobserve(e.target); });
+}, { threshold: 0.3 });
+bars.forEach(b => barObs.observe(b));
+
+// PROCESS STEPS
+const steps = document.querySelectorAll('.timeline-step');
+const processProgress = document.getElementById('processProgress');
+const tlObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('active');
+    if (processProgress) {
+      const activeCount = document.querySelectorAll('.timeline-step.active').length;
+      const total = steps.length;
+      const pct = Math.max(0, (activeCount - 1) / (total - 1)) * 75;
+      processProgress.style.width = pct + '%';
+    }
+  });
+}, { threshold: 0.4 });
+steps.forEach(s => tlObs.observe(s));
+
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// SMOOTH ANCHOR
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+
+// HERO SLIDER
+(function(){
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots   = document.querySelectorAll('.hero-dot');
+  const bar    = document.getElementById('heroProgress');
+  const DURATION = 5500;
+  let current = 0, timer, rafId, startTime;
+
+  function goTo(idx){
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (idx + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    startProgress();
+  }
+
+  function startProgress(){
+    clearTimeout(timer);
+    cancelAnimationFrame(rafId);
+    bar.style.transition = 'none';
+    bar.style.width = '0%';
+    startTime = performance.now();
+    function tick(now){
+      const pct = Math.min(((now - startTime) / DURATION) * 100, 100);
+      bar.style.width = pct + '%';
+      if(pct < 100) rafId = requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    timer = setTimeout(() => goTo(current + 1), DURATION);
+  }
+
+  document.getElementById('heroPrev').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('heroNext').addEventListener('click', () => goTo(current + 1));
+  dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+
+  // Pause on hover
+  const hero = document.querySelector('.hero');
+  hero.addEventListener('mouseenter', () => { clearTimeout(timer); cancelAnimationFrame(rafId); });
+  hero.addEventListener('mouseleave', () => {
+    const elapsed = (parseFloat(bar.style.width) / 100) * DURATION;
+    startTime = performance.now() - elapsed;
+    const remaining = DURATION - elapsed;
+    function tick(now){ const pct = Math.min(((now-startTime)/DURATION)*100,100); bar.style.width=pct+'%'; if(pct<100) rafId=requestAnimationFrame(tick); else goTo(current+1); }
+    rafId = requestAnimationFrame(tick);
+    timer = setTimeout(() => goTo(current + 1), remaining);
+  });
+
+  // Touch swipe support
+  let tsX = 0, tsY = 0;
+  hero.addEventListener('touchstart', e => { tsX = e.touches[0].clientX; tsY = e.touches[0].clientY; }, {passive:true});
+  hero.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - tsX;
+    const dy = Math.abs(e.changedTouches[0].clientY - tsY);
+    if(Math.abs(dx) > 48 && dy < 70){ goTo(dx > 0 ? current - 1 : current + 1); }
+  }, {passive:true});
+
+  startProgress();
+})();
+
+// Active nav link on scroll
+(function(){
+  const links = document.querySelectorAll('.nav-links a[href^="#"]');
+  const ids = Array.from(links).map(a => a.getAttribute('href').slice(1));
+  const targets = ids.map(id => document.getElementById(id)).filter(Boolean);
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(!e.isIntersecting) return;
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+    });
+  }, { threshold: 0.35, rootMargin: '-10% 0px -45% 0px' });
+  targets.forEach(t => obs.observe(t));
+})();
+
+// VIDEO: play only when visible, pause when scrolled away (saves bandwidth + battery)
+(function(){
+  const stainVideo = document.querySelector('.stain-img-wrap video');
+  if (!stainVideo) return;
+  const vObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { stainVideo.play().catch(()=>{}); }
+      else { stainVideo.pause(); }
+    });
+  }, { threshold: 0.25 });
+  vObs.observe(stainVideo);
+})();
+</script>
+
+<a href="https://wa.me/5500000000000" class="wa-float" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <span class="wa-float-tooltip">Falar no WhatsApp</span>
+  <div class="wa-float-btn">
+    <svg width="27" height="27" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  </div>
+</a>
+</body>
+</html>
