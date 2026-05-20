@@ -217,7 +217,7 @@ section{padding:6rem 2.5rem}
 .stain-section{background:var(--white);color:var(--navy)}
 .stain-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
 .stain-img-wrap{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(10,22,40,.15)}
-.stain-img-wrap video{width:100%;height:580px;object-fit:cover;display:block}
+.stain-img-wrap video,.stain-img-wrap img{width:100%;height:580px;object-fit:cover;display:block}
 .stain-badge{position:absolute;bottom:1.5rem;left:1.5rem;background:var(--navy);color:var(--white);padding:.7rem 1.2rem;border-radius:12px;font-size:.78rem;font-weight:700;display:flex;align-items:center;gap:.5rem;border-left:3px solid var(--gold)}
 .stain-content .section-tag{color:var(--blue-bright);background:rgba(30,111,217,.08);border-color:rgba(30,111,217,.2)}
 .stain-headline{font-size:clamp(1.4rem,2.2vw,1.9rem);font-weight:800;color:var(--navy);line-height:1.22;margin-bottom:1rem;letter-spacing:-.018em}
@@ -268,11 +268,15 @@ section{padding:6rem 2.5rem}
 .diff-card.featured{grid-row:span 2;background:var(--navy);border-color:transparent;display:flex;flex-direction:column;min-height:320px}
 .diff-card.featured::before{content:'';position:absolute;top:-50px;right:-50px;width:220px;height:220px;background:radial-gradient(circle,rgba(78,168,222,.13) 0%,transparent 70%);border-radius:50%;pointer-events:none;opacity:1;transform:none;transition:none}
 .diff-card.featured::after{background:linear-gradient(90deg,var(--blue-sky),var(--gold-light))}
+.diff-card.featured > :not(.diff-card-img){position:relative;z-index:1}
 .diff-card.featured:hover{transform:translateY(-6px);border-color:rgba(78,168,222,.25);box-shadow:0 24px 60px rgba(10,22,40,.3)}
 .diff-card.featured .diff-card-icon{background:rgba(78,168,222,.14);color:var(--blue-sky);margin-bottom:0}
 .diff-card.featured:hover .diff-card-icon{background:rgba(78,168,222,.24);transform:scale(1.1) rotate(-4deg)}
 .diff-card.featured h3{color:var(--white);font-size:1.18rem;margin-top:auto;padding-top:1.4rem;line-height:1.22}
 .diff-card.featured p{color:rgba(255,255,255,.55);font-size:.87rem;margin-top:.45rem}
+.diff-card-img{position:absolute;inset:0;z-index:0;pointer-events:none}
+.diff-card-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.58) saturate(.95)}
+.diff-card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,37,80,.1) 0%,rgba(15,37,80,.7) 48%,var(--navy) 100%)}
 /* Decorative large number in featured */
 .diff-feat-num{position:absolute;top:.3rem;right:1rem;font-size:7rem;font-weight:800;line-height:1;color:rgba(78,168,222,.07);letter-spacing:-.04em;pointer-events:none;user-select:none;font-family:'Montserrat',sans-serif}
 /* Tag */
@@ -292,6 +296,10 @@ section{padding:6rem 2.5rem}
 .cap-list li{display:flex;align-items:center;gap:.8rem;font-size:.9rem;color:rgba(255,255,255,.75);font-weight:400}
 .cap-list-dot{width:8px;height:8px;border-radius:50%;background:var(--blue-sky);flex-shrink:0}
 .cap-visual{display:flex;flex-direction:column;gap:1.5rem}
+.cap-photo{position:relative;height:230px;border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 24px 60px rgba(0,0,0,.22);margin-bottom:.4rem}
+.cap-photo img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.86)}
+.cap-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,40,0) 35%,rgba(10,22,40,.72) 100%)}
+.cap-photo-badge{position:absolute;left:1rem;bottom:1rem;z-index:1;background:rgba(15,37,80,.88);border:1px solid rgba(78,168,222,.22);color:var(--white);padding:.55rem .9rem;border-radius:10px;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
 .cap-bar-label{display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:.5rem;color:rgba(255,255,255,.65)}
 .cap-bar-label strong{color:var(--white);font-weight:700}
 .cap-bar-track{height:8px;background:rgba(255,255,255,.08);border-radius:50px;overflow:hidden}
@@ -367,6 +375,9 @@ section{padding:6rem 2.5rem}
 .process-section::before{content:'';position:absolute;top:-220px;right:-140px;width:540px;height:540px;background:radial-gradient(circle,rgba(30,111,217,.05) 0%,transparent 65%);border-radius:50%;pointer-events:none}
 .process-header{text-align:center;margin-bottom:4.5rem;position:relative;z-index:1}
 .process-header .section-heading{color:var(--navy)}
+.process-image-band{position:relative;height:320px;border-radius:24px;overflow:hidden;margin:-1.5rem 0 4rem;box-shadow:0 28px 70px rgba(10,22,40,.14);z-index:1}
+.process-image-band img{width:100%;height:100%;object-fit:cover;object-position:center 44%;display:block}
+.process-image-band::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,37,80,.64) 0%,rgba(15,37,80,.12) 50%,rgba(15,37,80,.48) 100%)}
 .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;z-index:1}
 .process-steps::before{content:'';position:absolute;top:27px;left:calc(12.5% + 1px);right:calc(12.5% + 1px);height:1px;background:rgba(10,22,40,.08);pointer-events:none}
 .process-progress{position:absolute;top:27px;left:calc(12.5% + 1px);height:1px;width:0;background:linear-gradient(90deg,var(--blue-bright),var(--blue-sky));transition:width 1s cubic-bezier(.4,0,.2,1);pointer-events:none}
@@ -422,6 +433,20 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
 .wa-float-tooltip::after{content:'';position:absolute;right:-7px;top:50%;transform:translateY(-50%);border:4px solid transparent;border-left-color:var(--navy)}
 .wa-float:hover .wa-float-tooltip{opacity:1;transform:translateX(0)}
 @keyframes waPulse{0%,100%{box-shadow:0 8px 24px rgba(37,211,102,.44)}50%{box-shadow:0 8px 40px rgba(37,211,102,.72)}}
+
+/* COOKIE BANNER */
+.cookie-banner{position:fixed;left:1.5rem;right:1.5rem;bottom:1.5rem;z-index:8990;background:rgba(6,14,26,.96);color:var(--white);border:1px solid rgba(78,168,222,.18);border-radius:18px;box-shadow:0 24px 70px rgba(0,0,0,.34);padding:1.2rem;display:none;align-items:center;justify-content:space-between;gap:1.25rem;max-width:1040px;margin:0 auto;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.cookie-banner.show{display:flex}
+.cookie-copy{max-width:670px}
+.cookie-copy strong{display:block;font-size:.95rem;margin-bottom:.35rem;color:var(--white)}
+.cookie-copy p{font-size:.8rem;line-height:1.65;color:rgba(255,255,255,.62);margin:0}
+.cookie-copy a{color:var(--blue-sky);font-weight:700;text-decoration:none}
+.cookie-copy a:hover{text-decoration:underline}
+.cookie-actions{display:flex;gap:.65rem;flex-shrink:0}
+.cookie-btn{border:none;border-radius:999px;padding:.78rem 1.15rem;font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:800;cursor:pointer;white-space:nowrap;transition:transform .2s,background .2s,border-color .2s}
+.cookie-btn:hover{transform:translateY(-2px)}
+.cookie-btn.accept{background:var(--blue-bright);color:#fff}
+.cookie-btn.reject{background:transparent;color:rgba(255,255,255,.76);border:1px solid rgba(255,255,255,.18)}
 
 /* ── ANIMATION SYSTEM ── */
 /* Base reveal */
@@ -508,7 +533,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
   .solution-note{padding:1.4rem 0 !important;border-right:none !important;border-top:1px solid rgba(255,255,255,.08)}
   .solution-note:first-child{padding-top:0 !important;border-top:none}
   .stain-inner{grid-template-columns:1fr;gap:2.5rem}
-  .stain-img-wrap video{height:280px}
+  .stain-img-wrap video,.stain-img-wrap img{height:280px}
   .diff-grid{grid-template-columns:1fr}
   .diff-card.featured{grid-row:span 1;min-height:auto}
   .equip-grid{grid-template-columns:1fr}
@@ -529,9 +554,13 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
   .wa-float{bottom:1.2rem;right:1.2rem}
   .wa-float-btn{width:52px;height:52px}
   .wa-float-tooltip{display:none}
+  .cookie-banner{left:1rem;right:1rem;bottom:1rem;align-items:flex-start;flex-direction:column;padding:1rem}
+  .cookie-actions{width:100%;display:grid;grid-template-columns:1fr 1fr}
+  .cookie-btn{width:100%;padding:.85rem .8rem}
   .process-steps{grid-template-columns:1fr 1fr;gap:2.5rem 1rem}
   .process-steps::before,.process-progress{display:none}
   .process-step{padding:0 .8rem}
+  .process-image-band{height:210px;margin:-1.4rem 0 3rem;border-radius:18px}
   .img-strip{grid-template-columns:1fr;height:auto}
   .img-strip-item{height:180px}
   .split-content{padding:2.5rem 1.5rem}
@@ -602,7 +631,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
 
     <!-- SLIDE 2 — Capacidade -->
     <div class="hero-slide">
-      <div class="hero-slide-bg" style="background-image:url('img/img_3248_1_1x.webp');background-position:center 40%"></div>
+      <div class="hero-slide-bg" style="background-image:url('img/lavanderia3.webp');background-position:center 44%"></div>
       <div class="hero-slide-overlay"></div>
       <div class="hero-slide-content">
         <div class="hero-slide-inner">
@@ -613,56 +642,6 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
           <p class="hero-slide-desc">Da coleta à entrega, nossa capacidade acompanha a demanda do seu negócio — em qualquer período do ano, sem imprevistos.</p>
           <div class="hero-ctas">
             <a href="https://wa.me/5500000000000" class="btn-primary" target="_blank">Solicitar atendimento</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 3 — Qualidade do enxoval -->
-    <div class="hero-slide">
-      <div class="hero-slide-bg" style="background-image:url('img/close_up_classify_clothes_1_1_1x.webp')"></div>
-      <div class="hero-slide-overlay"></div>
-      <div class="hero-slide-content">
-        <div class="hero-slide-inner">
-          <div class="hero-slide-eyebrow">Qualidade garantida</div>
-          <h2 class="hero-slide-heading">Cada peça entregue com o padrão que a <em>sua marca</em> merece.</h2>
-          <p class="hero-slide-desc">Toalhas, lençóis, uniformes e enxoval em geral — tratados com rigor técnico e cuidado artesanal em cada ciclo de higienização.</p>
-          <div class="hero-ctas">
-            <a href="https://wa.me/5500000000000" class="btn-primary" target="_blank">Falar com a equipe</a>
-            <a href="#diferenciais" class="btn-outline">Ver diferenciais ↓</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 4 — Serviço completo -->
-    <div class="hero-slide">
-      <div class="hero-slide-bg" style="background-image:url('img/img2.webp')"></div>
-      <div class="hero-slide-overlay"></div>
-      <div class="hero-slide-content">
-        <div class="hero-slide-inner">
-          <div class="hero-slide-eyebrow">Serviço completo</div>
-          <h2 class="hero-slide-heading">Da <em>coleta</em> à entrega, sem etapas soltas na sua operação.</h2>
-          <p class="hero-slide-desc">Organizamos toda a rotina de enxoval para que a sua equipe foque no que realmente importa — o atendimento ao cliente final.</p>
-          <div class="hero-ctas">
-            <a href="https://wa.me/5500000000000" class="btn-primary" target="_blank">Solicitar atendimento</a>
-            <a href="#solucoes" class="btn-outline">Ver o processo ↓</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 5 — Parceria -->
-    <div class="hero-slide">
-      <div class="hero-slide-bg" style="background-image:url('img/img_3240_1_1x.webp')"></div>
-      <div class="hero-slide-overlay"></div>
-      <div class="hero-slide-content">
-        <div class="hero-slide-inner">
-          <div class="hero-slide-eyebrow">Parceria de longo prazo</div>
-          <h2 class="hero-slide-heading">Um parceiro que cresce <em>junto com o seu negócio</em>.</h2>
-          <p class="hero-slide-desc">Contratos recorrentes com atendimento prioritário, suporte real e a regularidade que você pode contar em qualquer demanda.</p>
-          <div class="hero-ctas">
-            <a href="https://wa.me/5500000000000" class="btn-primary" target="_blank">Iniciar parceria</a>
           </div>
         </div>
       </div>
@@ -680,9 +659,6 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
     <div class="hero-dots" id="heroDots">
       <button class="hero-dot active" aria-label="Slide 1"></button>
       <button class="hero-dot" aria-label="Slide 2"></button>
-      <button class="hero-dot" aria-label="Slide 3"></button>
-      <button class="hero-dot" aria-label="Slide 4"></button>
-      <button class="hero-dot" aria-label="Slide 5"></button>
     </div>
 
     <div class="hero-arrows">
@@ -759,13 +735,13 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
 <!-- IMAGE STRIP -->
 <div class="img-strip">
   <div class="img-strip-item">
-    <img src="img/close_up_classify_clothes_1_1x.webp" alt="Organização de peças">
+    <img src="img/lavanderia1.webp" alt="Passadoria industrial de enxoval">
   </div>
   <div class="img-strip-item">
-    <img src="img/close_up_arranging_clothes_1_1x.webp" alt="Arrumação de enxoval">
+    <img src="img/lavanderia2.webp" alt="Equipe organizando enxoval limpo">
   </div>
   <div class="img-strip-item">
-    <img src="img/img4.webp" alt="Enxoval organizado">
+    <img src="img/lavanderia3.webp" alt="Lavanderia industrial com enxoval organizado">
   </div>
 </div>
 
@@ -898,7 +874,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
   <div class="container">
     <div class="stain-inner">
       <div class="stain-img-wrap reveal from-left">
-        <video src="img/video.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Tratamento artesanal de manchas — Vale Azul"></video>
+        <img src="img/close_up_classify_clothes_1_1_1x.webp" alt="Tratamento artesanal de manchas — Vale Azul">
         <div class="stain-badge">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           Já incluso no serviço
@@ -998,6 +974,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
     <div class="diff-grid">
       <!-- Featured — spans 2 rows, left column -->
       <div class="diff-card featured reveal from-left">
+        <div class="diff-card-img"><img src="img/lavanderia1.webp" alt="Estrutura industrial da Vale Azul"></div>
         <div class="diff-feat-num">01</div>
         <div class="diff-card-icon">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
@@ -1069,6 +1046,10 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
         <div class="cap-closer">Mais segurança para empresas que precisam de estrutura de verdade na sua cadeia de enxoval.</div>
       </div>
       <div class="cap-visual reveal from-right d2">
+        <div class="cap-photo">
+          <img src="img/lavanderia2.webp" alt="Equipe Vale Azul organizando enxoval em escala industrial">
+          <div class="cap-photo-badge">Operação em escala</div>
+        </div>
         <div class="cap-bar-item">
           <div class="cap-bar-label"><span>Volume diário</span><strong>10.000 peças</strong></div>
           <div class="cap-bar-track"><div class="cap-bar-fill" data-width="95"></div></div>
@@ -1157,7 +1138,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
     <div class="equip-grid">
       <div class="equip-card reveal from-up d1">
         <div class="equip-card-img">
-          <img src="img/img1.webp" alt="Equipamentos da Vale Azul">
+          <img src="img/lavanderia1.webp" alt="Calandras industriais da Vale Azul">
         </div>
         <div class="equip-card-body">
           <div class="equip-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
@@ -1167,7 +1148,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
       </div>
       <div class="equip-card reveal from-up d2">
         <div class="equip-card-img">
-          <img src="img/img3.webp" alt="Máquinas extratoras — Vale Azul">
+          <img src="img/lavanderia2.webp" alt="Equipe e máquinas extratoras da Vale Azul">
         </div>
         <div class="equip-card-body">
           <div class="equip-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg></div>
@@ -1177,7 +1158,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
       </div>
       <div class="equip-card reveal from-up d3">
         <div class="equip-card-img">
-          <img src="img/img4.webp" alt="Tratamento manual — Vale Azul">
+          <img src="img/lavanderia3.webp" alt="Equipamentos para rotinas intensas da Vale Azul">
         </div>
         <div class="equip-card-body">
           <div class="equip-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
@@ -1244,6 +1225,9 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
       <h2 class="section-heading">Como funciona o atendimento</h2>
       <p class="section-sub" style="color:#718096;margin:.8rem auto 0;max-width:480px">Um processo simples e estruturado do início ao fim, para garantir previsibilidade e qualidade em cada ciclo.</p>
     </div>
+    <div class="process-image-band reveal from-up d1">
+      <img src="img/close_up_arranging_clothes_1_1x.webp" alt="Organização de enxoval no processo da Vale Azul">
+    </div>
     <div class="process-steps">
       <div class="process-progress" id="processProgress"></div>
       <div class="timeline-step process-step reveal from-up" data-step="1">
@@ -1286,7 +1270,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
 <section class="final-cta-section" id="contato">
   <div class="final-cta-inner">
     <div class="final-cta-image reveal from-left">
-      <img src="img/img5.webp" alt="Equipe Vale Azul atendendo cliente">
+      <img src="img/lavanderia2.webp" alt="Equipe Vale Azul atendendo operação de enxoval">
     </div>
     <div class="final-cta-content reveal from-right">
       <div class="section-tag gold" style="margin-bottom:1.6rem;align-self:flex-start">A hora certa é agora</div>
@@ -1339,11 +1323,12 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
         <li><a href="https://wa.me/5500000000000" target="_blank">WhatsApp</a></li>
         <li><a href="#contato">Solicitar proposta</a></li>
         <li><a href="#contato">Falar com a equipe</a></li>
+        <li><a href="politica-de-privacidade.html">Política de privacidade</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2025 Lavanderia Vale Azul. Todos os direitos reservados.</p>
+    <p>© 2026 Lavanderia Vale Azul. Todos os direitos reservados.</p>
     <p>Lavanderia industrial para hotelaria, motéis, buffets e restaurantes.</p>
   </div>
 </footer>
@@ -1524,6 +1509,29 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   }, { threshold: 0.25 });
   vObs.observe(stainVideo);
 })();
+
+// COOKIE CONSENT
+(function(){
+  document.addEventListener('DOMContentLoaded', () => {
+    const banner = document.getElementById('cookieBanner');
+    const accept = document.getElementById('cookieAccept');
+    const reject = document.getElementById('cookieReject');
+    if (!banner || !accept || !reject) return;
+
+    const key = 'valeAzulCookieConsent';
+    if (!localStorage.getItem(key)) {
+      requestAnimationFrame(() => banner.classList.add('show'));
+    }
+
+    function saveConsent(value) {
+      localStorage.setItem(key, JSON.stringify({ value, savedAt: new Date().toISOString() }));
+      banner.classList.remove('show');
+    }
+
+    accept.addEventListener('click', () => saveConsent('accepted'));
+    reject.addEventListener('click', () => saveConsent('rejected'));
+  });
+})();
 </script>
 
 <a href="https://wa.me/5500000000000" class="wa-float" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
@@ -1532,5 +1540,16 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     <svg width="27" height="27" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
   </div>
 </a>
+
+<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Aviso de cookies">
+  <div class="cookie-copy">
+    <strong>Usamos cookies para melhorar sua experiência.</strong>
+    <p>Utilizamos cookies essenciais e, se autorizados, dados de navegação para entender o uso da página e melhorar nosso atendimento. Saiba mais na <a href="politica-de-privacidade.html">Política de Privacidade</a>.</p>
+  </div>
+  <div class="cookie-actions">
+    <button class="cookie-btn reject" id="cookieReject" type="button">Recusar</button>
+    <button class="cookie-btn accept" id="cookieAccept" type="button">Aceitar cookies</button>
+  </div>
+</div>
 </body>
 </html>
