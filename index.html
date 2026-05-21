@@ -383,6 +383,11 @@ section{padding:6rem 2.5rem}
 .cap-photo img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.86)}
 .cap-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,40,0) 35%,rgba(10,22,40,.72) 100%)}
 .cap-photo-badge{position:absolute;left:1rem;bottom:1rem;z-index:1;background:rgba(15,37,80,.88);border:1px solid rgba(78,168,222,.22);color:var(--white);padding:.55rem .9rem;border-radius:10px;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.cap-gallery{position:relative;z-index:1;margin-top:4rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.cap-gallery-item{min-height:260px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);box-shadow:0 20px 48px rgba(0,0,0,.18)}
+.cap-gallery-item:nth-child(2),.cap-gallery-item:nth-child(4){transform:translateY(1.6rem)}
+.cap-gallery-item img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:brightness(.92) saturate(1.02);transition:transform .55s ease,filter .55s ease}
+.cap-gallery-item:hover img{transform:scale(1.045);filter:brightness(1) saturate(1.06)}
 .cap-bar-label{display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:.5rem;color:rgba(255,255,255,.65)}
 .cap-bar-label strong{color:var(--white);font-weight:700}
 .cap-bar-track{height:8px;background:rgba(255,255,255,.08);border-radius:50px;overflow:hidden}
@@ -580,6 +585,9 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
   .diff-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
   .diff-card.featured{grid-row:span 1;min-height:auto}
   .cap-inner{grid-template-columns:1fr;gap:3rem}
+  .cap-gallery{grid-template-columns:repeat(3,1fr)}
+  .cap-gallery-item{min-height:240px}
+  .cap-gallery-item:nth-child(2),.cap-gallery-item:nth-child(4){transform:none}
   .equip-grid{grid-template-columns:repeat(2,1fr)}
   .process-steps{grid-template-columns:repeat(2,1fr);gap:3rem 0}
   .process-steps::before,.process-progress{display:none}
@@ -639,6 +647,9 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
   .final-cta-content::before{display:none}
   .solution-notes{flex-direction:column;gap:1rem}
   .cap-stats{flex-direction:column;gap:1.5rem}
+  .cap-gallery{grid-template-columns:1fr 1fr;gap:.75rem;margin-top:3rem}
+  .cap-gallery-item{min-height:220px;border-radius:14px}
+  .cap-gallery-item:last-child{grid-column:1 / -1;max-height:260px}
   .wa-float{bottom:1.2rem;right:1.2rem}
   .wa-float-btn{width:52px;height:52px}
   .wa-float-tooltip{display:none}
@@ -823,13 +834,13 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
 <!-- IMAGE STRIP -->
 <div class="img-strip">
   <div class="img-strip-item">
-    <img src="img/img1.webp" alt="Lavanderia industrial com máquinas e enxoval limpo">
+    <img src="img/lavanderia1.webp" alt="Calandras industriais da Vale Azul" loading="lazy">
   </div>
   <div class="img-strip-item">
-    <img src="img/img3.webp" alt="Profissional abastecendo máquina industrial com enxoval">
+    <img src="img/close_up_classify_clothes_1_1x.webp" alt="Separação e classificação de enxoval limpo" loading="lazy">
   </div>
   <div class="img-strip-item">
-    <img src="img/img4.webp" alt="Equipe operando máquinas de lavanderia industrial">
+    <img src="img/lavanderia2.webp" alt="Estrutura da lavanderia industrial Vale Azul" loading="lazy">
   </div>
 </div>
 
@@ -962,7 +973,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
   <div class="container">
     <div class="stain-inner">
       <div class="stain-img-wrap reveal from-left">
-        <img src="img/close_up_classify_clothes_1_1_1x.webp" alt="Tratamento artesanal de manchas — Vale Azul">
+        <img src="img/cap5.png" alt="Tratamento manual de peças na Lavanderia Vale Azul" loading="lazy" style="object-position:center top">
         <div class="stain-badge">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           Já incluso no serviço
@@ -1062,7 +1073,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
     <div class="diff-grid">
       <!-- Featured — spans 2 rows, left column -->
       <div class="diff-card featured reveal from-left">
-        <div class="diff-card-img"><img src="img/img2.webp" alt="Estrutura industrial da Vale Azul"></div>
+        <div class="diff-card-img"><img src="img/img2.webp" alt="Estrutura industrial da Vale Azul" loading="lazy"></div>
         <div class="diff-feat-num">01</div>
         <div class="diff-card-icon">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
@@ -1135,7 +1146,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
       </div>
       <div class="cap-visual reveal from-right d2">
         <div class="cap-photo">
-          <img src="img/img1.webp" alt="Equipamentos e enxoval em escala industrial">
+          <img src="img/img1.webp" alt="Equipamentos e enxoval em escala industrial" loading="lazy">
           <div class="cap-photo-badge">Operação em escala</div>
         </div>
         <div class="cap-bar-item">
@@ -1159,6 +1170,12 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
         </div>
       </div>
     </div>
+    <div class="cap-gallery reveal from-up d2" aria-label="Imagens da estrutura e capacidade da Vale Azul">
+      <div class="cap-gallery-item"><img src="img/cap1.png" alt="Registro da capacidade operacional da Vale Azul" loading="lazy"></div>
+      <div class="cap-gallery-item"><img src="img/cap2.png" alt="Processo industrial de lavagem da Vale Azul" loading="lazy"></div>
+      <div class="cap-gallery-item"><img src="img/cap3.png" alt="Equipamentos industriais da Vale Azul em funcionamento" loading="lazy"></div>
+      <div class="cap-gallery-item"><img src="img/cap4.png" alt="Rotina de processamento de enxoval na Vale Azul" loading="lazy"></div>
+    </div>
   </div>
 </section>
 
@@ -1175,7 +1192,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
     <div class="target-grid">
       <!-- Featured — hotéis -->
       <div class="target-card featured reveal from-left">
-        <div class="target-card-img"><img src="img/hotel.webp" alt="Hotéis"></div>
+        <div class="target-card-img"><img src="img/hotel.webp" alt="Hotéis" loading="lazy"></div>
         <div class="target-feat-num">01</div>
         <div class="target-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
         <div class="target-card-name">Hotéis</div>
@@ -1184,28 +1201,28 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
       </div>
       <!-- Motéis -->
       <div class="target-card reveal from-up d1">
-        <div class="target-card-img"><img src="img/motel.webp" alt="Motéis"></div>
+        <div class="target-card-img"><img src="img/motel.webp" alt="Motéis" loading="lazy"></div>
         <div class="target-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20M4 20V10l8-6 8 6v10"/><rect x="9" y="14" width="6" height="6"/></svg></div>
         <div class="target-card-name">Motéis</div>
         <p>Logística discreta e confiável com ciclos de coleta e entrega sob medida para sua operação.</p>
       </div>
       <!-- Buffets -->
       <div class="target-card reveal from-up d2">
-        <div class="target-card-img"><img src="img/buffet.webp" alt="Buffets & Eventos"></div>
+        <div class="target-card-img"><img src="img/buffet.webp" alt="Buffets & Eventos" loading="lazy"></div>
         <div class="target-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
         <div class="target-card-name">Buffets & Eventos</div>
         <p>Toalhas, guardanapos e uniformes impecáveis para cada evento, entregues sempre no prazo certo.</p>
       </div>
       <!-- Restaurantes -->
       <div class="target-card reveal from-up d3">
-        <div class="target-card-img"><img src="img/restaurante.webp" alt="Restaurantes"></div>
+        <div class="target-card-img"><img src="img/restaurante.webp" alt="Restaurantes" loading="lazy"></div>
         <div class="target-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div>
         <div class="target-card-name">Restaurantes</div>
         <p>Higienização de uniformes e enxoval de mesa com regularidade semanal e padrão profissional.</p>
       </div>
       <!-- Grandes Operações -->
       <div class="target-card reveal from-up d4">
-        <div class="target-card-img"><img src="img/empresas.webp" alt="Grandes Operações"></div>
+        <div class="target-card-img"><img src="img/empresas.webp" alt="Grandes Operações" loading="lazy"></div>
         <div class="target-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
         <div class="target-card-name">Grandes Operações</div>
         <p>Capacidade de absorver grandes volumes com controle de qualidade e relatórios de produção detalhados.</p>
@@ -1226,7 +1243,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
     <div class="equip-grid">
       <div class="equip-card reveal from-up d1">
         <div class="equip-card-img">
-          <img src="img/lavanderia1.webp" alt="Calandras industriais da Vale Azul">
+          <img src="img/img4.webp" alt="Equipe e máquinas extratoras da Vale Azul" loading="lazy">
         </div>
         <div class="equip-card-body">
           <div class="equip-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
@@ -1236,7 +1253,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
       </div>
       <div class="equip-card reveal from-up d2">
         <div class="equip-card-img">
-          <img src="img/img4.webp" alt="Equipe e máquinas extratoras da Vale Azul">
+          <img src="img/img3.webp" alt="Equipamentos para rotinas intensas da Vale Azul" loading="lazy">
         </div>
         <div class="equip-card-body">
           <div class="equip-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg></div>
@@ -1246,7 +1263,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
       </div>
       <div class="equip-card reveal from-up d3">
         <div class="equip-card-img">
-          <img src="img/img3.webp" alt="Equipamentos para rotinas intensas da Vale Azul">
+          <img src="img/lavanderia3.webp" alt="Lavanderia industrial preparada para grande volume" loading="lazy">
         </div>
         <div class="equip-card-body">
           <div class="equip-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
@@ -1314,7 +1331,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
       <p class="section-sub" style="color:#718096;margin:.8rem auto 0;max-width:480px">Um processo simples e estruturado do início ao fim, para garantir previsibilidade e qualidade em cada ciclo.</p>
     </div>
     <div class="process-image-band reveal from-up d1">
-      <img src="img/close_up_arranging_clothes_1_1x.webp" alt="Organização de enxoval no processo da Vale Azul">
+      <img src="img/close_up_arranging_clothes_1_1x.webp" alt="Organização de enxoval no processo da Vale Azul" loading="lazy">
     </div>
     <div class="process-steps">
       <div class="process-progress" id="processProgress"></div>
@@ -1358,7 +1375,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
 <section class="final-cta-section" id="contato">
   <div class="final-cta-inner">
     <div class="final-cta-image reveal from-left">
-      <img src="img/close_up_arranging_clothes_1_1x.webp" alt="Equipe Vale Azul organizando operação de enxoval">
+      <img src="img/img5.webp" alt="Estrutura industrial da Lavanderia Vale Azul preparada para grandes volumes" loading="lazy" style="object-position:center 45%">
     </div>
     <div class="final-cta-content reveal from-right">
       <div class="section-tag gold" style="margin-bottom:1.6rem;align-self:flex-start">A hora certa é agora</div>
