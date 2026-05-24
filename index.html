@@ -202,11 +202,6 @@ nav.scrolled{background:rgba(8,18,35,.96);backdrop-filter:blur(24px);-webkit-bac
 .strip-label{font-size:.76rem;color:rgba(255,255,255,.6);margin-top:.4rem;letter-spacing:.05em;font-weight:500}
 
 /* ── IMAGE STRIP ── */
-.img-strip{display:grid;grid-template-columns:repeat(3,1fr);height:280px;overflow:hidden}
-.img-strip-item{overflow:hidden;position:relative}
-.img-strip-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-.img-strip-item:hover img{transform:scale(1.05)}
-.img-strip-item::after{content:'';position:absolute;inset:0;background:rgba(10,22,40,.35)}
 
 /* ── COMMON SECTIONS ── */
 section{padding:6rem 2.5rem}
@@ -298,17 +293,15 @@ section{padding:6rem 2.5rem}
 
 /* ── STAIN SECTION ── */
 .stain-section{background:var(--white);color:var(--navy)}
-.stain-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-.stain-img-wrap{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(10,22,40,.15)}
-.stain-img-wrap video,.stain-img-wrap img{width:100%;height:580px;object-fit:cover;display:block}
-.stain-badge{position:absolute;bottom:1.5rem;left:1.5rem;background:var(--navy);color:var(--white);padding:.7rem 1.2rem;border-radius:12px;font-size:.78rem;font-weight:700;display:flex;align-items:center;gap:.5rem;border-left:3px solid var(--gold)}
+.stain-inner{display:flex;justify-content:center}
+.stain-content{max-width:760px;text-align:center}
 .stain-content .section-tag{color:var(--blue-bright);background:rgba(30,111,217,.08);border-color:rgba(30,111,217,.2)}
 .stain-headline{font-size:clamp(1.4rem,2.2vw,1.9rem);font-weight:800;color:var(--navy);line-height:1.22;margin-bottom:1rem;letter-spacing:-.018em}
 .stain-headline em{font-style:normal;color:var(--blue-bright)}
 .stain-body{font-size:.95rem;color:#4a5568;line-height:1.75;margin-bottom:1.5rem}
-.stain-types{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.8rem}
+.stain-types{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-bottom:1.8rem}
 .stain-tag{display:inline-flex;align-items:center;gap:.4rem;background:#EEF5FF;border:1px solid rgba(30,111,217,.15);color:#2d4a8a;padding:.4rem .9rem;border-radius:50px;font-size:.78rem;font-weight:600}
-.stain-included{background:var(--navy);color:var(--white);border-radius:16px;padding:1.4rem 1.8rem;display:flex;align-items:center;gap:1rem;margin-top:.5rem}
+.stain-included{background:var(--navy);color:var(--white);border-radius:16px;padding:1.4rem 1.8rem;display:flex;align-items:center;gap:1rem;margin:.5rem auto 0;text-align:left}
 .stain-included-icon{flex-shrink:0;width:44px;height:44px;background:rgba(78,168,222,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--blue-sky)}
 .stain-included-text{font-size:.88rem;color:rgba(255,255,255,.8);line-height:1.6}
 .stain-included-text strong{color:var(--white);display:block;margin-bottom:.25rem;font-size:.93rem}
@@ -401,8 +394,8 @@ section{padding:6rem 2.5rem}
 .equip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
 .equip-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:22px;overflow:hidden;transition:transform .35s,background .35s,border-color .35s}
 .equip-card:hover{transform:translateY(-5px);background:rgba(255,255,255,.08);border-color:rgba(78,168,222,.3)}
-.equip-card-img{height:190px;overflow:hidden}
-.equip-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.equip-card-img{overflow:hidden;background:rgba(10,22,40,.18)}
+.equip-card-img img{width:100%;height:auto;display:block;object-fit:contain;transition:transform .5s ease}
 .equip-card:hover .equip-card-img img{transform:scale(1.06)}
 .equip-card-body{padding:1.8rem 1.8rem 2rem}
 .equip-card-icon{width:52px;height:52px;background:rgba(78,168,222,.15);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--blue-sky);margin-bottom:1.2rem}
@@ -463,9 +456,6 @@ section{padding:6rem 2.5rem}
 .process-section::before{content:'';position:absolute;top:-220px;right:-140px;width:540px;height:540px;background:radial-gradient(circle,rgba(30,111,217,.05) 0%,transparent 65%);border-radius:50%;pointer-events:none}
 .process-header{text-align:center;margin-bottom:4.5rem;position:relative;z-index:1}
 .process-header .section-heading{color:var(--navy)}
-.process-image-band{position:relative;height:320px;border-radius:24px;overflow:hidden;margin:-1.5rem 0 4rem;box-shadow:0 28px 70px rgba(10,22,40,.14);z-index:1}
-.process-image-band img{width:100%;height:100%;object-fit:cover;object-position:center 44%;display:block}
-.process-image-band::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,37,80,.64) 0%,rgba(15,37,80,.12) 50%,rgba(15,37,80,.48) 100%)}
 .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;z-index:1}
 .process-steps::before{content:'';position:absolute;top:27px;left:calc(12.5% + 1px);right:calc(12.5% + 1px);height:1px;background:rgba(10,22,40,.08);pointer-events:none}
 .process-progress{position:absolute;top:27px;left:calc(12.5% + 1px);height:1px;width:0;background:linear-gradient(90deg,var(--blue-bright),var(--blue-sky));transition:width 1s cubic-bezier(.4,0,.2,1);pointer-events:none}
@@ -596,7 +586,6 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
   .target-card.featured{grid-row:span 1;min-height:auto}
   .footer-inner{grid-template-columns:1fr 1fr}
   .footer-brand{grid-column:span 2}
-  .img-strip{height:200px}
   .strip-inner{grid-template-columns:1fr;gap:1.5rem}
   .strip-stat+.strip-stat::before{display:none}
 }
@@ -628,8 +617,6 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
   .solution-notes{flex-direction:column;gap:0}
   .solution-note{padding:1.4rem 0 !important;border-right:none !important;border-top:1px solid rgba(255,255,255,.08)}
   .solution-note:first-child{padding-top:0 !important;border-top:none}
-  .stain-inner{grid-template-columns:1fr;gap:2.5rem}
-  .stain-img-wrap video,.stain-img-wrap img{height:280px}
   .diff-grid{grid-template-columns:1fr}
   .diff-card.featured{grid-row:span 1;min-height:auto}
   .equip-grid{grid-template-columns:1fr}
@@ -659,9 +646,6 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
   .process-steps{grid-template-columns:1fr 1fr;gap:2.5rem 1rem}
   .process-steps::before,.process-progress{display:none}
   .process-step{padding:0 .8rem}
-  .process-image-band{height:210px;margin:-1.4rem 0 3rem;border-radius:18px}
-  .img-strip{grid-template-columns:1fr;height:auto}
-  .img-strip-item{height:180px}
   .split-content{padding:2.5rem 1.5rem}
 }
 @media(prefers-reduced-motion:reduce){
@@ -831,19 +815,6 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
   </div>
 </section>
 
-<!-- IMAGE STRIP -->
-<div class="img-strip">
-  <div class="img-strip-item">
-    <img src="img/lavanderia1.webp" alt="Calandras industriais da Vale Azul" loading="lazy">
-  </div>
-  <div class="img-strip-item">
-    <img src="img/close_up_classify_clothes_1_1x.webp" alt="Separação e classificação de enxoval limpo" loading="lazy">
-  </div>
-  <div class="img-strip-item">
-    <img src="img/lavanderia2.webp" alt="Estrutura da lavanderia industrial Vale Azul" loading="lazy">
-  </div>
-</div>
-
 <!-- BENEFITS -->
 <section class="benefits-section" id="beneficios">
   <div class="container">
@@ -861,7 +832,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
         <div class="bento-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h3>Enxoval sempre disponível</h3>
+        <h3>Enxoval disponível</h3>
         <p>Sua operação nunca para por falta de peças. Mantemos a regularidade para você trabalhar com tranquilidade em qualquer volume — incluindo períodos de alta demanda.</p>
       </div>
 
@@ -972,14 +943,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
 <section class="stain-section">
   <div class="container">
     <div class="stain-inner">
-      <div class="stain-img-wrap reveal from-left">
-        <img src="img/cap5.png" alt="Tratamento manual de peças na Lavanderia Vale Azul" loading="lazy" style="object-position:center top">
-        <div class="stain-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Já incluso no serviço
-        </div>
-      </div>
-      <div class="reveal from-right d1">
+      <div class="stain-content reveal from-up d1">
         <div class="section-tag">Cuidado que vai além</div>
         <h2 class="stain-headline">Remoção artesanal de manchas — <em>sem custo adicional</em>.</h2>
         <p class="stain-body">Manchas difíceis fazem parte da rotina de qualquer operação. Após a lavagem industrial, cada peça é avaliada manualmente. O que ainda precisa de atenção vai direto para a bancada, onde nossa equipe trata à mão — sem cobrar nada a mais por isso.</p>
@@ -1222,7 +1186,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
       </div>
       <!-- Grandes Operações -->
       <div class="target-card reveal from-up d4">
-        <div class="target-card-img"><img src="img/empresas.webp" alt="Grandes Operações" loading="lazy"></div>
+        <div class="target-card-img"><img src="img/img1.webp" alt="Grandes Operações" loading="lazy"></div>
         <div class="target-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
         <div class="target-card-name">Grandes Operações</div>
         <p>Capacidade de absorver grandes volumes com controle de qualidade e relatórios de produção detalhados.</p>
@@ -1243,7 +1207,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
     <div class="equip-grid">
       <div class="equip-card reveal from-up d1">
         <div class="equip-card-img">
-          <img src="img/img4.webp" alt="Equipe e máquinas extratoras da Vale Azul" loading="lazy">
+          <img src="img/calandras_1.webp" alt="Calandras de alta produção da Vale Azul" loading="lazy">
         </div>
         <div class="equip-card-body">
           <div class="equip-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
@@ -1253,7 +1217,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
       </div>
       <div class="equip-card reveal from-up d2">
         <div class="equip-card-img">
-          <img src="img/img3.webp" alt="Equipamentos para rotinas intensas da Vale Azul" loading="lazy">
+          <img src="img/intenso_1.webp" alt="Máquinas extratoras da Vale Azul" loading="lazy">
         </div>
         <div class="equip-card-body">
           <div class="equip-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg></div>
@@ -1263,7 +1227,7 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
       </div>
       <div class="equip-card reveal from-up d3">
         <div class="equip-card-img">
-          <img src="img/lavanderia3.webp" alt="Lavanderia industrial preparada para grande volume" loading="lazy">
+          <img src="img/extratoras_1.webp" alt="Equipamentos para rotinas intensas da Vale Azul" loading="lazy">
         </div>
         <div class="equip-card-body">
           <div class="equip-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
@@ -1329,9 +1293,6 @@ footer{background:#060e1a;padding:3rem 2.5rem 2rem;border-top:1px solid rgba(255
       <div class="section-tag">Como funciona</div>
       <h2 class="section-heading">Como funciona o atendimento</h2>
       <p class="section-sub" style="color:#718096;margin:.8rem auto 0;max-width:480px">Um processo simples e estruturado do início ao fim, para garantir previsibilidade e qualidade em cada ciclo.</p>
-    </div>
-    <div class="process-image-band reveal from-up d1">
-      <img src="img/close_up_arranging_clothes_1_1x.webp" alt="Organização de enxoval no processo da Vale Azul" loading="lazy">
     </div>
     <div class="process-steps">
       <div class="process-progress" id="processProgress"></div>
@@ -1611,19 +1572,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     });
   }, { threshold: 0.35, rootMargin: '-10% 0px -45% 0px' });
   targets.forEach(t => obs.observe(t));
-})();
-
-// VIDEO: play only when visible, pause when scrolled away (saves bandwidth + battery)
-(function(){
-  const stainVideo = document.querySelector('.stain-img-wrap video');
-  if (!stainVideo) return;
-  const vObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { stainVideo.play().catch(()=>{}); }
-      else { stainVideo.pause(); }
-    });
-  }, { threshold: 0.25 });
-  vObs.observe(stainVideo);
 })();
 
 // COOKIE CONSENT
