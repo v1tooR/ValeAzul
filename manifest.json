@@ -1,0 +1,18 @@
+{
+  "name": "Lavanderia Industrial Vale Azul",
+  "short_name": "Vale Azul",
+  "description": "Lavanderia industrial e hoteleira em Pindamonhangaba para hotéis, motéis, buffets, restaurantes e empresas.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f2550",
+  "theme_color": "#0f2550",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

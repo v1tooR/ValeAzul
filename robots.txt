@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Bloquear acesso a arquivos desnecessários
+Disallow: /.git/
+
+# Sitemap para indexação
+Sitemap: https://lavanderiavalazul.com.br/sitemap.xml
